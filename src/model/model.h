@@ -61,7 +61,7 @@ namespace s21 {
                     }
                     ListNode(double value, int priority, std::string type) : 
                         value_(value), priority_(priority), type_(type){}
-                        ListNode(ListNode& other) {
+                        ListNode(const ListNode& other) {
                         this->value_ = other.value_;
                         this->priority_ = other.priority_;
                         this->type_ = other.type_;
@@ -91,17 +91,18 @@ namespace s21 {
                         return this->type_;
                     }
             };
-            ListNode* node_;
+            ListNode node_;
         public:
             Model() {;}
             ~Model() {;}
             void say_hello() { std::cout << "Hello World" << std::endl; }
             void get_lexem() {
                 std::list<ListNode> a;
-                this->node_->set_value(56.3);
+                this->node_.set_value(56.3);
                 a.push_back(ListNode(2.3,3,"sdfs"));
                 a.push_back(this->node_);
-                std::cout << a.front().get_value() << std::endl;
+                for (auto i = a.begin(); i != a.end(); i++)
+                    std::cout << (*i).get_value() << std::endl;
             }
     }; 
 
