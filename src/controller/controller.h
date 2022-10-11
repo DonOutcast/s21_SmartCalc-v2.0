@@ -3,7 +3,7 @@
 namespace s21 {
     class Controller {
     private:
-        s21::Model model_;
+        s21::Model *model_;
     public:
         Controller() {;}
         ~Controller() {;}

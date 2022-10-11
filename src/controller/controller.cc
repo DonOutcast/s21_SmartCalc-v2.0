@@ -1,7 +1,7 @@
 #include "controller.h"
 
 void s21::Controller::say() {
-    model_.say_hello();
+    model_->say_hello();
 }
 
 
