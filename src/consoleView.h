@@ -2,9 +2,9 @@
 #define CONSOLEVIEW_H
 
 #include "exampleController.h"
+#include <iostream>
 
-enum Choice
-{
+enum Choice {
     SUM = 1,
     SUB = 2,
     MUL = 3,
@@ -14,8 +14,7 @@ enum Choice
     NONE = -1
 };
 
-class ConsoleView
-{
+class ConsoleView {
     private:
         ExampleController *controller;
     public:
@@ -26,4 +25,6 @@ class ConsoleView
         void startEventLoop();
 };
 
+
+#include "consoleView.cpp"
 #endif

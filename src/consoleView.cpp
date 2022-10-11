@@ -1,12 +1,11 @@
 #include "consoleView.h"
-#include <iostream>
+
 
 using std::cin;
 using std::cout;
 using std::endl;
 
-void ConsoleView::displayMenu()
-{
+void ConsoleView::displayMenu() {
     std::cout << "=========" << std::endl;
     std::cout << " M E N U " << std::endl;
     std::cout << "=========" << std::endl;

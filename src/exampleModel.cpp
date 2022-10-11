@@ -1,21 +1,17 @@
 #include "exampleModel.h"
 
-void ExampleModel::add(double a) 
-{
+void ExampleModel::add(double a) {
     data += a;
 } 
 
-void ExampleModel::mult(double a) 
-{
+void ExampleModel::mult(double a) {
     data *= a;
 }
 
-void ExampleModel::reset()
-{
+void ExampleModel::reset(){
     data = 0;
 }
 
-double ExampleModel::getData()
-{
+double ExampleModel::getData(){
     return data;
 }
