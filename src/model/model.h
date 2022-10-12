@@ -1,9 +1,9 @@
 #ifndef MODEL_H
-#define MODEL_H
-#include <cmath>
+#define MODEL_H #include <cmath>
 #include <iostream>
 #include <stdexcept>
 #include <string>
+#include <cstring>
 #include <map>
 #include <list>
 
@@ -93,17 +93,13 @@ namespace s21 {
             };
             ListNode node_;
         public:
+            using str = std::string;
+            using iter = std::string::iterator;
             Model() {;}
             ~Model() {;}
             void say_hello() { std::cout << "Hello World" << std::endl; }
-            void get_lexem() {
-                std::list<ListNode> a;
-                this->node_.set_value(56.3);
-                a.push_back(ListNode(2.3,3,"sdfs"));
-                a.push_back(this->node_);
-                for (auto i = a.begin(); i != a.end(); i++)
-                    std::cout << (*i).get_value() << std::endl;
-            }
+       
+            void remove_space(str &string);
     }; 
 
 
