@@ -5,6 +5,7 @@
 #include <string>
 #include <cstring>
 #include <map>
+#include <set>
 #include <list>
 
 
@@ -16,14 +17,14 @@ namespace s21 {
                 {"NO", 0},
                 {"SIZE", 1000}
             };
-            std::map<std::string, std::string> lexems_{
-                {"LEXEM_PLUS", "+"},
-                {"LEXEM_MINUS", "-"},
-                {"LEXEM_MULT", "*"},
-                {"LEXEM_DIV", "/"},
-                {"OPEN_BRACE", "("},
-                {"CLOSE_BRACE", ")"},
-                {"POINT", "."}
+            std::map<std::string, char> lexems_{
+                {"LEXEM_PLUS", '+'},
+                {"LEXEM_MINUS", '-'},
+                {"LEXEM_MULT", '*'},
+                {"LEXEM_DIV", '/'},
+                {"OPEN_BRACE", '('},
+                {"CLOSE_BRACE", ')'},
+                {"POINT", '.'}
             };
             std::map<std::string, int> type_t_ {
                 {"s21_number", 1},
@@ -100,6 +101,14 @@ namespace s21 {
             void say_hello() { std::cout << "Hello World" << std::endl; }
        
             void remove_space(str &string);
+            int check_point(const char *point);
+            int check_numbers(const char *numbers);
+            int check_x(const char *x);
+            int check_mod(const char *mod);
+        private:
+            int check_name_mod(const char *mod);
+
+
     }; 
 
 
