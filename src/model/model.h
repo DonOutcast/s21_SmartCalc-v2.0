@@ -2,7 +2,7 @@
 #define MODEL_H #include <cmath>
 #include <iostream>
 #include <stdexcept>
-#include <string>
+#include <string> 
 #include <cstring>
 #include <map>
 #include <set>
@@ -112,8 +112,10 @@ namespace s21 {
             int check_acos(const char *acos);
             int check_atan(const char *atan);
             int check_sqrt(const char *sqrt);
-            int cehck_ln(const char *ln);
+            int check_ln(const char *ln);
             int check_log(const char *log);
+            int check_after_lexem(const char *after_lexem);
+            int check_after_lexem_numbers(const char *after_lexem);
 
         private:
             int check_name_mod(const char *mod);
