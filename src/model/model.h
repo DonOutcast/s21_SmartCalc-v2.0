@@ -105,6 +105,16 @@ namespace s21 {
             int check_numbers(const char *numbers);
             int check_x(const char *x);
             int check_mod(const char *mod);
+            int check_sin(const char *sin);
+            int check_cos(const char *cos);
+            int check_tan(const char *tan);
+            int check_asin(const char *asin);
+            int check_acos(const char *acos);
+            int check_atan(const char *atan);
+            int check_sqrt(const char *sqrt);
+            int cehck_ln(const char *ln);
+            int check_log(const char *log);
+
         private:
             int check_name_mod(const char *mod);
 

@@ -34,6 +34,22 @@ namespace s21 {
         return result;
     }
 
+    int Model::check_sin(const char *sin) {
+        int result = this->some_items_["OK"];
+        if (std::strncmp(sin, "sin(", 4)) {
+            result = this->some_items_["NO"];
+        }
+        return result;
+    }
+
+    int Model::check_cos(const char *cos) {
+        int result = this->some_items_["OK"];
+        if (std::strncmp(cos, "cos(", 4)) {
+            result = this->some_items_["NO"];
+        }
+        return result;
+    }
+
     int Model::check_mod(const char *mod) {
         int result = this->some_items_["NO"];
         if (this->check_name_mod(mod) && (this->check_numbers(mod - 1) && this->check_numbers(mod +3))) {
@@ -51,15 +67,17 @@ namespace s21 {
         }
         return result;
     }
+
+  
     
 
 }  // namespace s21
 
 int main(void) {
     s21::Model a;
-    std::string j("2mod3");
+    std::string j("sin(1)");
     for (int i = 0; i < j.length(); ++i) {
-        std::cout << a.check_mod(&j[i]) << std::endl;
+        std::cout << a.check_sin(&j[i]) << std::endl;
     }
 
     return 0; 
