@@ -127,11 +127,13 @@ namespace s21 {
             int check_after_lexem(const char *after_lexem);
             int check_after_lexem_numbers(const char *after_lexem);
            
-            int finaly(str &input, double X, double &resultOutput);
+            int finally(str &input, double X, double &resultOutput);
 
 
         private:
             int check_name_mod(const char *mod);
+            int check_size_string(const str& string);
+            int validation_string(const str &string);
 
 
     }; 

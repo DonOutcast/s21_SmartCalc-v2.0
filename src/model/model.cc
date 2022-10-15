@@ -285,12 +285,74 @@ namespace s21 {
     } 
         return result;
     }
+    
+    int Model::validation_string(const str &string){
+        int result = 0;
+        for (int i = 0; i < string.length(); ++i) {
+            if (this->check_numbers(&string[i]) && (this->check_after_lexem_numbers(&string[i + 1]) == 0)) {
+            } else if (this->check_mod(&string[i])) {
+                i += 2;
+            } else if (this->check_sin(&string[i])) {
+                i += 3;
+            } else if (this->check_cos(&string[i])) {
+                i += 3;
+            } else if (this->check_tan(&string[i])) {
+                i += 3;
+            } else if (this->check_asin(&string[i])) {
+                i += 4;
+            } else if (this->check_acos(&string[i])) {
+                i += 4;
+            } else if (this->check_atan(&string[i])) {
+                i += 4;
+            } else if (this->check_sqrt(&string[i])) {
+                i += 4;
+            } else if (this->check_ln(&string[i])) {
+                i += 2;
+            } else if (this->check_log(&string[i])) {
+                i += 3;
+            } else if (this->check_x(&string[i])) {
+            } else if (this->check_plus(&string[i])) {
+            } else if (this->check_minus(&string[i])) {
+            } else if (this->check_div(&string[i])) {
+            } else if (this->check_mult(&string[i])) {
+            } else if (this->check_pow(&string[i])) {
+            } else if (this->check_point(&string[i])) {
+            } else if (string[i] == this->lexems_["CLOSE_BRACE"] || this->lexems_["OPEN_BRACE"]) {
+            } else {
+                result = 1;
+                break;
+            }
+        }
+        return result;
+    }
 
-    int Model::finaly(str &input, double X, double &resultOutput) {
+    int Model::finally(str &input, double X, double &resultOutput) {
         int exit = 0;
-        size_t size = input.length();
-        str 
+        exit = this->check_size_string(input);
+        if(exit != -2) {
+            exit = this->check_input_X(std::to_string(X)); 
+            if (exit) {
+                this->remove_space(input);
+                exit = this->check_brace(input);
+                if(exit) {
+                   exit = this->validation_string(input);
+                } else {
+                    exit = 2;
+                }
+            }
+        }
+
+        
+
         return exit;
+    }
+    
+    int Model::check_size_string(const str& string) {
+        int result = 0;
+        if (string.length() == 0 || string.length() > 255) {
+            result = -2;
+        }
+        return result;
     }
   
     
@@ -299,8 +361,9 @@ namespace s21 {
 
 int main(void) {
     s21::Model a;
-    std::string j("(-2*3");
-    std::cout << a.check_brace(j) << std::endl;
+    std::string j("");
+    double b = 0;
+    std::cout << a.finally(j, 2.2, b) << std::endl;
     /* for (int i = 0; i < j.length(); ++i) { */
     /*     std::cout << a.check_minus(&j[i]) << std::endl; */
     /* } */
