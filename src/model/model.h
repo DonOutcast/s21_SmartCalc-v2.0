@@ -50,18 +50,19 @@ namespace s21 {
                 {"s21_mult", 20},
                 {"s21_div", 21}
             };
+        public:
             struct ListNode {
                 private:
                     double value_;
                     int priority_;
-                    std::string type_;
+                    int type_;
                 public:
                     ListNode() {
                         this->value_ = 0;
                         this->priority_ = 0;
-                        this->type_ = "";
+                        this->type_ = 0;
                     }
-                    ListNode(double value, int priority, std::string type) : 
+                    ListNode(double value, int priority, int type) : 
                         value_(value), priority_(priority), type_(type){}
                         ListNode(const ListNode& other) {
                         this->value_ = other.value_;
@@ -80,7 +81,7 @@ namespace s21 {
                     void set_priority(int priority) {
                         this->priority_ = priority;
                     }
-                    void set_type(std::string type) {
+                    void set_type(int type) {
                         this->type_ = type;
                     }
                     double get_value() {
@@ -89,7 +90,7 @@ namespace s21 {
                     int get_priority() {
                         return this->priority_;
                     }
-                    std::string get_type() {
+                    int get_type() {
                         return this->type_;
                     }
             };
@@ -129,7 +130,7 @@ namespace s21 {
            
             int finally(str &input, double X, double &resultOutput);
 
-            void parsing_to_struct(const str &sring, std::list<ListNode> node_);
+            void parsing_to_struct(const str &string, std::list<ListNode> node_);
 
 
         private:

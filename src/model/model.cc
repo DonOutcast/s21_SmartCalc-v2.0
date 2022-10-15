@@ -341,9 +341,6 @@ namespace s21 {
                 }
             }
         }
-
-        
-
         return exit;
     }
     
@@ -354,6 +351,31 @@ namespace s21 {
         }
         return result;
     }
+
+
+    void Model::parsing_to_struct(const str &string, std::list<ListNode> node_)  {
+        str number;
+        std::cout << string << std::endl;
+        for (int i = 0; i < string.length(); ++i) {
+            if (this->check_numbers(&string[i]) || this->check_point(&string[i])) {
+                number.push_back(string[i]);
+                if ((string[i + 1] < '0' || string[i + 1] > '9' ) && !this->check_point(&string[i + 1])) {
+                    node_.push_back(ListNode(std::stof(number), 0, this->type_t_["s21_number"]));
+                    number.clear();
+                }
+
+            } else if (this->check_x(&string[i])) {
+                node_.push_back(ListNode(0, 0, this->type_t_["s21_x"]));
+            } else if (string[i] == this->lexems_["OPEN_BRACE"]) {
+                node_.push_back(ListNode(0, 0, this->type_t_["s21_open_brace"]));
+            } else if (string[i] == this->lexems_["CLOSE_BRACE"]) {
+                node_.push_back(ListNode(0, 0, this->type_t_["s21_close_brace"]));
+            } else if (string[i] == this->lexems_["LEXEM_PLUS"]) {
+                node_.push_back(ListNode(0, 0, this->type_t_["s21_plus"]))
+            }
+        }
+
+    }
   
     
 
@@ -361,11 +383,18 @@ namespace s21 {
 
 int main(void) {
     s21::Model a;
-    std::string j("");
+    std::string j("2+2");
     double b = 0;
+    std::list<s21::Model::ListNode> testing;
+    a.parsing_to_struct(j, testing);
+    for(auto i : testing)
+        std::cout << (i).get_value() << std::endl;
+    
     std::cout << a.finally(j, 2.2, b) << std::endl;
     /* for (int i = 0; i < j.length(); ++i) { */
-    /*     std::cout << a.check_minus(&j[i]) << std::endl; */
+    /*     if (!a.check_point(&j[i])) */
+            /* std::cout << "You" << std::endl; */
+        /* std::cout << a.check_point(&j[i]) << std::endl; */
     /* } */
 
     return 0; 
