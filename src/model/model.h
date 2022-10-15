@@ -24,7 +24,8 @@ namespace s21 {
                 {"LEXEM_DIV", '/'},
                 {"OPEN_BRACE", '('},
                 {"CLOSE_BRACE", ')'},
-                {"POINT", '.'}
+                {"POINT", '.'},
+                {"POW", '^'}
             };
             std::map<std::string, int> type_t_ {
                 {"s21_number", 1},
@@ -114,8 +115,20 @@ namespace s21 {
             int check_sqrt(const char *sqrt);
             int check_ln(const char *ln);
             int check_log(const char *log);
+            int check_pow(const char *pow);
+
+            int check_div(const char *div);
+            int check_mult(const char *mult);
+            int check_minus(const char *minus);
+            int check_plus(const char *plus);
+            int check_brace(const str &brace);
+            int check_input_X(const str &x);
+
             int check_after_lexem(const char *after_lexem);
             int check_after_lexem_numbers(const char *after_lexem);
+           
+            int finaly(str &input, double X, double &resultOutput);
+
 
         private:
             int check_name_mod(const char *mod);
