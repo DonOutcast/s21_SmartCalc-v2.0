@@ -355,6 +355,7 @@ namespace s21 {
 
     void Model::parsing_to_struct(const str &string, std::list<ListNode> node_)  {
         str number;
+        const char first_symbol = string[0];
         std::cout << string << std::endl;
         for (int i = 0; i < string.length(); ++i) {
             if (this->check_numbers(&string[i]) || this->check_point(&string[i])) {
@@ -371,9 +372,51 @@ namespace s21 {
             } else if (string[i] == this->lexems_["CLOSE_BRACE"]) {
                 node_.push_back(ListNode(0, 0, this->type_t_["s21_close_brace"]));
             } else if (string[i] == this->lexems_["LEXEM_PLUS"]) {
-                node_.push_back(ListNode(0, 0, this->type_t_["s21_plus"]))
+                if ((string[i] == first_symbol) || string[i - 1] == this->lexems_["CLOSE_BRACE"]) {
+                    node_.push_back(ListNode(0, 1, this->type_t_["s21_un_plus"]));
+                } else {
+                      node_.push_back(ListNode(0, 1, this->type_t_["s21_plus"]));
+                }
+                    
+            } else if (string[i] == this->lexems_["LEXEM_MINUS"]) {
+                if (string[i] == first_symbol || string[i] == this->lexems_["CLOSE_BRACE"]) {
+                    node_.push_back(ListNode(0, 1,  this->type_t_["s21_un_minus"]));
+                } else  {
+                    node_.push_back(ListNode(0, 1, this->type_t_["s21_minus"]));
+                }
+            } else if (string[i] == this->lexems_["LEXEM_MULT"]) {
+                node_.push_back(ListNode(0, 2, this->type_t_["s21_mult"]));
+            } else if (string[i] == this->lexems_["LEXEM_DIV"]) {
+                node_.push_back(ListNode(0, 2, this->type_t_["s21_div"]));
+            } else if (this->check_mod(&string[i])) {
+                node_.push_back(ListNode(0, 2, this->type_t_["s21_mod"]));
+            } else if (string[i] == this->lexems_["POW"]) {
+                node_.push_back(ListNode(0, 3, this->type_t_["s21_pow"]));
+            } else if (this->check_sin(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_sin"]));
+                i +=2;
+            }  else if (this->check_cos(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_cos"]));
+                i +=2;
+            } else if (this->check_tan(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_tan"]));
+                i += 2;
+            } else if (this->check_asin(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_asin"]));
+                i += 3;
+            } else if (this->check_acos(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_acos"]));
+                i += 3;
+            } else if (this->check_atan(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_atan"]));
+                i +=3 ;
+            } else if (this->check_ln(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_ln"]));
+                i += 1;
+            } else if (this->check_log(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_log"]));
+                i += 2;
             }
-        }
 
     }
   
