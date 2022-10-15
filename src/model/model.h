@@ -129,6 +129,8 @@ namespace s21 {
            
             int finally(str &input, double X, double &resultOutput);
 
+            void parsing_to_struct(const str &sring, std::list<ListNode> node_);
+
 
         private:
             int check_name_mod(const char *mod);
