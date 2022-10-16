@@ -417,11 +417,23 @@ namespace s21 {
                 node_.push_back(ListNode(0, 4, this->type_t_["s21_log"]));
                 i += 2;
             }
-
+        }
     }
-  
     
-
+    void Model::pols_notation(std::list<ListNode> &list_lexems) {}
+    
+    int Model::check_support(std::list<ListNode> &support_lexems, int priority) {
+        int result = 0;
+        std::list<ListNode>::iterator iter = support_lexems.begin();
+        if ((*iter).get_type()) {
+            if (priority > (*iter).get_priority()) {
+                result = 1;
+            }
+        } else {
+            result = 1;
+        }
+        return result;
+    }
 }  // namespace s21
 
 int main(void) {

@@ -100,7 +100,9 @@ namespace s21 {
             using iter = std::string::iterator;
             Model() {;}
             ~Model() {;}
-            void say_hello() { std::cout << "Hello World" << std::endl; }
+            void say_hello() { 
+               std::list<ListNode> a; 
+            }
        
             void remove_space(str &string);
             int check_point(const char *point);
@@ -131,12 +133,14 @@ namespace s21 {
             int finally(str &input, double X, double &resultOutput);
 
             void parsing_to_struct(const str &string, std::list<ListNode> node_);
-
+            void pols_notation(std::list<ListNode> &list_lexems);
+            int check_support(std::list<ListNode> &support_lexems, int priority);
 
         private:
             int check_name_mod(const char *mod);
             int check_size_string(const str& string);
             int validation_string(const str &string);
+            
 
 
     }; 
