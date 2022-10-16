@@ -1,0 +1,21 @@
+# ninja log v5
+15	88	1665925783000000000	s21_SmartCalc_v2_0	6705f341bbe90f83
+0	245	1665925813000000000	build.ninja	5c10f9ef5d9aa8d9
+1	67	1665925538000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/code-samples/main.cpp.o	95038dc7e06b45b0
+0	67	1665925538000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/code-samples/exampleController.cpp.o	15148be8614c1f27
+0	67	1665925538000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/code-samples/exampleModel.cpp.o	2e734242708733d6
+0	534	1665925538000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/code-samples/consoleView.cpp.o	3536e3593239cff5
+4	1145	1665925757000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	44499d602dbe30b5
+0	59	1665925813000000000	build.ninja	5c10f9ef5d9aa8d9
+3	894	1665925814000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
+894	950	1665925814000000000	s21_SmartCalc_v2_0	6705f341bbe90f83
+3	1024	1665926001000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
+1025	1083	1665926001000000000	s21_SmartCalc_v2_0	6705f341bbe90f83
+3	1255	1665926030000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
+1255	1324	1665926030000000000	s21_SmartCalc_v2_0	6705f341bbe90f83
+3	966	1665926053000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
+966	1023	1665926053000000000	s21_SmartCalc_v2_0	6705f341bbe90f83
+3	876	1665926078000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
+876	926	1665926078000000000	s21_SmartCalc_v2_0	6705f341bbe90f83
+3	1290	1665926250000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
+1290	1465	1665926250000000000	s21_SmartCalc_v2_0	6705f341bbe90f83

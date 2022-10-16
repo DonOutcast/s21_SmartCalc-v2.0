@@ -94,14 +94,13 @@ namespace s21 {
                         return this->type_;
                     }
             };
-            ListNode node_;
         public:
             using str = std::string;
             using iter = std::string::iterator;
             Model() {;}
             ~Model() {;}
             void say_hello() { 
-               std::list<ListNode> a; 
+            ;
             }
        
             void remove_space(str &string);
@@ -133,7 +132,7 @@ namespace s21 {
             int finally(str &input, double X, double &resultOutput);
 
             void parsing_to_struct(const str &string, std::list<ListNode> node_);
-            void pols_notation(std::list<ListNode> &list_lexems);
+            std::list<ListNode> pols_notation(std::list<ListNode> &list_lexems);
             int check_support(std::list<ListNode> &support_lexems, int priority);
 
         private:

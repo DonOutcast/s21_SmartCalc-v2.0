@@ -24,7 +24,7 @@ namespace s21 {
         if (*x == 'x' || *x == 'X') {
             result = this->some_items_["OK"];
             if (*(x - 1) == this->lexems_["POINT"] || *(x - 1) == this->lexems_["OPEN_BRACE"] ||
-                    *(x - 1) >= '0' && *(x - 1) <= '9') {
+                    (*(x - 1) >= '0' && *(x - 1) <= '9')) {
                 result = this->some_items_["NO"];
             }
         }
@@ -249,7 +249,7 @@ namespace s21 {
         int result = this->some_items_["OK"];
         int open_brace = 0;
         int close_brace = 0;
-        for (int i = 0; i < brace.length(); ++i) {
+        for (size_t i = 0; i < brace.length(); ++i) {
             if (brace[i] == this->lexems_["OPEN_BRACE"]) {
                 open_brace += 1;
                 if (brace[i + 1] == this->lexems_["CLOSE_BRACE"]) {
@@ -270,7 +270,7 @@ namespace s21 {
     }
     int Model::check_input_X(const str &x) {
     int result = -1;
-    for (int i = 0; i < x.length(); i++) {
+    for (size_t i = 0; i < x.length(); i++) {
         if (this->check_numbers(&x[i])) {
             result = this->some_items_["OK"];
         } else if ((x[i] == this->lexems_["LEXEM_PLUS"]) && i == 0) {
@@ -288,7 +288,7 @@ namespace s21 {
     
     int Model::validation_string(const str &string){
         int result = 0;
-        for (int i = 0; i < string.length(); ++i) {
+        for (size_t i = 0; i < string.length(); ++i) {
             if (this->check_numbers(&string[i]) && (this->check_after_lexem_numbers(&string[i + 1]) == 0)) {
             } else if (this->check_mod(&string[i])) {
                 i += 2;
@@ -328,6 +328,7 @@ namespace s21 {
 
     int Model::finally(str &input, double X, double &resultOutput) {
         int exit = 0;
+        resultOutput +=1;
         exit = this->check_size_string(input);
         if(exit != -2) {
             exit = this->check_input_X(std::to_string(X)); 
@@ -339,6 +340,16 @@ namespace s21 {
                 } else {
                     exit = 2;
                 }
+            }
+        }
+        if (!exit) {
+            std::list<ListNode> list_lexems;
+            std::cout << input;
+            this->parsing_to_struct(input, list_lexems);
+            std::list<ListNode> test(this->pols_notation(list_lexems));
+        std::cout << "EEE" << std::endl;
+            for (std::list<ListNode>::iterator iter = test.begin(); iter != test.end(); ++iter) {
+                std::cout << (*iter).get_value();
             }
         }
         return exit;
@@ -356,8 +367,7 @@ namespace s21 {
     void Model::parsing_to_struct(const str &string, std::list<ListNode> node_)  {
         str number;
         const char first_symbol = string[0];
-        std::cout << string << std::endl;
-        for (int i = 0; i < string.length(); ++i) {
+        for (size_t i = 0; i < string.length(); ++i) {
             if (this->check_numbers(&string[i]) || this->check_point(&string[i])) {
                 number.push_back(string[i]);
                 if ((string[i + 1] < '0' || string[i + 1] > '9' ) && !this->check_point(&string[i + 1])) {
@@ -418,9 +428,58 @@ namespace s21 {
                 i += 2;
             }
         }
+        for (auto j : node_) {
+            std::cout << j.get_value();
+        }
     }
     
-    void Model::pols_notation(std::list<ListNode> &list_lexems) {}
+    std::list<typename Model::ListNode> Model::pols_notation(std::list<ListNode> &list_lexems) {
+        std::list<ListNode> support;
+        std::list<ListNode> after_notation;
+        std::list<ListNode>::iterator iter_list =  list_lexems.begin();
+        for (auto j : list_lexems) {
+            std::cout << j.get_type();
+        }
+        while (iter_list != list_lexems.end()) {
+        std::cout << "Hello1" << std::endl;
+            if ((*iter_list).get_type() != this->type_t_["s21_close_brace"]) {
+                if ((*iter_list).get_type() == this->type_t_["s21_number"] || (*iter_list).get_type() == this->type_t_["s21_x"]) {
+                    after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+                } else {
+                    while (true) {
+                        if (this->check_support(support, (*iter_list).get_priority()) || (*iter_list).get_type() == this->type_t_["s21_open_brace"]) {
+                            support.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+                            break;
+                        } else {
+                            after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+                            /* after_notation.push_back(*iter_list); */
+                            support.pop_back();
+                        }
+                    }  
+                }
+            } else {
+                while ((*support.begin()).get_type() != this->type_t_["s21_open_brace"]) {
+                    after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+                    support.pop_back();                    
+                }
+                support.pop_back();
+            }
+
+            iter_list++;
+        }
+        std::list<ListNode>::iterator iter_support = support.begin();
+        while (iter_support != support.end()) {
+                    after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+                    support.pop_back();
+                    ++iter_support;
+        }
+
+        for (auto i : after_notation) {
+            std::cout << i.get_value() << std::endl;
+        }
+
+        return after_notation;
+    }
     
     int Model::check_support(std::list<ListNode> &support_lexems, int priority) {
         int result = 0;
@@ -439,13 +498,9 @@ namespace s21 {
 int main(void) {
     s21::Model a;
     std::string j("2+2");
-    double b = 0;
-    std::list<s21::Model::ListNode> testing;
-    a.parsing_to_struct(j, testing);
-    for(auto i : testing)
-        std::cout << (i).get_value() << std::endl;
-    
-    std::cout << a.finally(j, 2.2, b) << std::endl;
+    double b;
+
+    a.finally(j, 2.2, b);
     /* for (int i = 0; i < j.length(); ++i) { */
     /*     if (!a.check_point(&j[i])) */
             /* std::cout << "You" << std::endl; */
