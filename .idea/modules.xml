@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/s21_SmartCalc-v2.0.iml" filepath="$PROJECT_DIR$/.idea/s21_SmartCalc-v2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/s21_SmartCalc_v2_0.iml" filepath="$PROJECT_DIR$/.idea/s21_SmartCalc_v2_0.iml" />
     </modules>
   </component>
 </project>

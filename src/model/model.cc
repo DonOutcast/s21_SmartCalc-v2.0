@@ -348,6 +348,9 @@ namespace s21 {
             std::list<ListNode> test(this->pols_notation(list_lexems));
             this->swap_x_n_number(test, X);
             this->calculate(test);
+            std::list<ListNode>::iterator iter = test.begin();
+            resultOutput = (*iter).get_value();
+
         }
         return exit;
     }
@@ -386,7 +389,7 @@ namespace s21 {
                 }
                     
             } else if (string[i] == this->lexems_["LEXEM_MINUS"]) {
-                if (string[i] == first_symbol || string[i] == this->lexems_["CLOSE_BRACE"]) {
+                if (string[i] == first_symbol || string[i - 1] == this->lexems_["CLOSE_BRACE"]) {
                     node_.push_back(ListNode(0, 1,  this->type_t_["s21_un_minus"]));
                 } else  {
                     node_.push_back(ListNode(0, 1, this->type_t_["s21_minus"]));
@@ -425,6 +428,9 @@ namespace s21 {
                 i += 2;
             }
         }
+        for (auto i : node_) {
+            std::cout << i.get_type() << " < Type " <<  i.get_value() << "  <Value " << i.get_priority()  << " <Priority"<< std::endl;
+        }
     }
     
     std::list<typename Model::ListNode> Model::pols_notation(std::list<ListNode> &list_lexems) {
@@ -434,24 +440,24 @@ namespace s21 {
         while (iter_list != list_lexems.end()) {
             if ((*iter_list).get_type() != this->type_t_["s21_close_brace"]) {
                 if ((*iter_list).get_type() == this->type_t_["s21_number"] || (*iter_list).get_type() == this->type_t_["s21_x"]) {
-                    after_notation.push_back(*iter_list);
-                    /* after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type())); */
+//                    after_notation.push_back(*iter_list);
+                    after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
                 } else {
                     while (true) {
                         if (this->check_support(support, (*iter_list).get_priority()) || (*iter_list).get_type() == this->type_t_["s21_open_brace"]) {
                             support.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
                             break;
                         } else {
-                            /* after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type())); */
-                            after_notation.push_back(*iter_list);
+                             after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+//                            after_notation.push_back(*iter_list);
                             support.pop_back();
                         }
                     }  
                 }
             } else {
                 while ((*support.begin()).get_type() != this->type_t_["s21_open_brace"]) {
-                    /* after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type())); */
-                    after_notation.push_back(*iter_list);
+                     after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+//                    after_notation.push_back(*iter_list);
                     support.pop_back();                    
                 }
                 support.pop_back();
@@ -461,10 +467,13 @@ namespace s21 {
         }
         std::list<ListNode>::iterator iter_support = support.begin();
         while (iter_support != support.end()) {
-                    /* after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type())); */
-                    after_notation.push_back(*iter_list);
+                    after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+//                    after_notation.push_back(*iter_list);
                     support.pop_back();
                     ++iter_support;
+        }
+        for (auto i : after_notation) {
+            std::cout << i.get_type() << " < Type " <<  i.get_value() << "  <Value " << i.get_priority()  << " <Priority"<< std::endl;
         }
 
         return after_notation;
@@ -496,6 +505,132 @@ namespace s21 {
         after_pols = tmp;
     }
 
+    void Model::calculate(type_list &after_pols) {
+        after_pols.reverse();
+        for (auto i : after_pols) {
+            std::cout << i.get_type() << " < Type " <<  i.get_value() << "  <Value " << i.get_priority()  << " <Priority"<< std::endl;
+        }
+        while (!after_pols.empty()) {
+            std::list<ListNode>::iterator tmp1 = after_pols.begin();
+            std::list<ListNode>::iterator tmp2 = ++tmp1;
+            --tmp1;
+            std::list<ListNode>::iterator tmp3;
+            if (tmp2 != after_pols.end()) {
+              tmp3 = ++tmp2;
+             --tmp2; 
+            }
+            if (((*tmp2).get_type() == this->type_t_["s21_number"])) {
+                while (!(*tmp3).get_priority()) {
+                    tmp1 = tmp2;
+                    tmp2 = ++tmp1;
+                    --tmp1;
+                    tmp3 = ++tmp2;
+                    --tmp2;
+                }
+                std::cout << (*tmp3).get_type()  << "This is type " << std::endl;
+                if ((*tmp3).get_type() >= 16 && (*tmp3).get_type() <= 21) {
+                    this->calculate_lexems(after_pols, tmp1, tmp2, tmp3);
+                } else {
+                    this->calculate_functions(after_pols, tmp2, tmp3);
+                }
+            } else {
+                this->calculate_functions_2(after_pols, tmp1, tmp2);
+            }
+        }
+    }
+ 
+  void Model::calculate_lexems(std::list<ListNode> &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3) {
+  double result = 0;
+  double a = (*tmp1).get_value();
+  double b = (*tmp2).get_value();
+  if ((*tmp3).get_type() == this->type_t_["s21_plus"]) {
+    result = a + b;
+  } else if ((*tmp3).get_type() == this->type_t_["s21_minus"]) {
+    result = a - b;
+  } else if ((*tmp3).get_type() == this->type_t_["s21_mult"]) {
+    result = a * b;
+  } else if ((*tmp3).get_type() == this->type_t_["s21_div"]) {
+    result = a / b;
+  } else if ((*tmp3).get_type() == this->type_t_["s21_pow"]) {
+    result = pow(a, b);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_mod"]) {
+    result = fmod(a, b);
+  }
+  (*tmp1).set_priority(0);
+  (*tmp1).set_type(this->type_t_["s21_number"]);
+  (*tmp1).set_value(result);
+  after_pols.erase(tmp3);
+  after_pols.erase(tmp2);
+}
+
+  void Model::calculate_functions(type_list &after_pols, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3) {
+  double a = (*tmp2).get_value();
+  double result = 0;
+  if ((*tmp3).get_type() == this->type_t_["21_un_plus"]) {
+    result = +a;
+  } else if ((*tmp3).get_type() == this->type_t_["s21_un_minus"]) {
+    result = -a;
+  } else if ((*tmp3).get_type() == this->type_t_["s21_sin"]) {
+    result = sin(a);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_cos"]) {
+    result = cos(a);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_tan"]) {
+    result = tan(a);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_asin"]) {
+    result = asin(a);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_acos"]) {
+    result = acos(a);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_atan"]) {
+    result = atan(a);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_ln"]) {
+    result = log(a);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_log"]) {
+    result = log10(a);
+  } else if ((*tmp3).get_type() == this->type_t_["s21_sqrt"]) {
+    result = sqrt(a);
+  }
+  (*tmp2).set_priority(0);
+  (*tmp2).set_type(this->type_t_["s21_number"]);
+  (*tmp2).set_value(result);
+  after_pols.erase(tmp3);
+}
+
+
+  void Model::calculate_functions_2(type_list &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2) {
+  double a = 0;
+  double result = (*tmp1).get_value();
+  if ((*tmp2).get_type() == this->type_t_["s21_un_plus"]) {
+    result = +a;
+  } else if ((*tmp2).get_type() == this->type_t_["s21_un_minus"]) {
+    result = -a;
+  } else if ((*tmp2).get_type() == this->type_t_["s21_sin"]) {
+    result = sin(a);
+  } else if ((*tmp2).get_type() == this->type_t_["s21_cos"]) {
+    result = cos(a);
+  } else if ((*tmp2).get_type() == this->type_t_["s21_tan"]) {
+    result = tan(a);
+  } else if ((*tmp2).get_type() == this->type_t_["s21_asin"]) {
+    result = asin(a);
+  } else if ((*tmp2).get_type() == this->type_t_["s21_acos"]) {
+    result = acos(a);
+  } else if ((*tmp2).get_type() == this->type_t_["s21_atan"]) {
+    result = atan(a);
+  } else if ((*tmp2).get_type() == this->type_t_["s21_ln"]) {
+    result = log(a);
+  } else if ((*tmp2).get_type() == this->type_t_["s21_log"]) {
+    result = log10(a);
+  } else if ((*tmp2).get_type() == this->type_t_["s21_sqrt"]) {
+    result = sqrt(a);
+  }
+  (*tmp1).set_priority(0);
+  (*tmp1).set_type(this->type_t_["s21_number"]);
+  (*tmp1).set_value(result);
+  after_pols.erase(tmp2);
+}
+
+
+
+
 }  // namespace s21
 
 int main(void) {
@@ -504,6 +639,7 @@ int main(void) {
     double b;
 
     a.finally(j, 2.2, b);
+    std::cout << b << std::endl; 
     /* for (int i = 0; i < j.length(); ++i) { */
     /*     if (!a.check_point(&j[i])) */
             /* std::cout << "You" << std::endl; */

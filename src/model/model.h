@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <string> 
 #include <cstring>
+#include <cmath>
 #include <map>
 #include <set>
 #include <list>
@@ -56,6 +57,11 @@ namespace s21 {
                     double value_;
                     int priority_;
                     int type_;
+                    void bring_to_zero() {
+                        this->value_ = 0;
+                        this->priority_ = 0;
+                        this->type_ = 0;
+                    }
                 public:
                     ListNode() {
                         this->value_ = 0;
@@ -75,6 +81,16 @@ namespace s21 {
                     this->type_ = other.type_;
                 }
                     ~ListNode(){;}
+                    ListNode& operator=(const ListNode& other) {
+                        if (this != &other) {
+                            this->bring_to_zero();
+                            this->value_ = other.value_;
+                            this->priority_ = other.priority_;
+                            this->type_ = other.type_;
+
+                        }
+                        return *this;
+                    }
                     void set_value(double value) {
                         this->value_ = value;
                     }
@@ -97,6 +113,7 @@ namespace s21 {
         public:
             using str = std::string;
             using iter = std::string::iterator;
+            using type_list = std::list<ListNode>;
             Model() {;}
             ~Model() {;}
             void say_hello() { 
@@ -136,7 +153,9 @@ namespace s21 {
             int check_support(std::list<ListNode> &support_lexems, int priority);
             void swap_x_n_number(std::list<ListNode> &after_posl, double &number_x);
             void calculate(std::list<ListNode> &after_pols);
-            void calculate_lexems(std:list<ListNode> &after_pols,)
+            void calculate_lexems(std::list<ListNode> &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3);
+            void calculate_functions(type_list &after_pols, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3);
+            void calculate_functions_2(type_list &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2);
 
         private:
             int check_name_mod(const char *mod);
