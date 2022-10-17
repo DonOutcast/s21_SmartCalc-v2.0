@@ -131,9 +131,12 @@ namespace s21 {
            
             int finally(str &input, double X, double &resultOutput);
 
-            void parsing_to_struct(const str &string, std::list<ListNode> node_);
+            void parsing_to_struct(const str &string, std::list<ListNode> &node_);
             std::list<ListNode> pols_notation(std::list<ListNode> &list_lexems);
             int check_support(std::list<ListNode> &support_lexems, int priority);
+            void swap_x_n_number(std::list<ListNode> &after_posl, double &number_x);
+            void calculate(std::list<ListNode> &after_pols);
+            void calculate_lexems(std:list<ListNode> &after_pols,)
 
         private:
             int check_name_mod(const char *mod);
