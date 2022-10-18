@@ -347,9 +347,10 @@ namespace s21 {
             this->parsing_to_struct(input, list_lexems);
             std::list<ListNode> test(this->pols_notation(list_lexems));
             this->swap_x_n_number(test, X);
-            this->calculate(test);
-            std::list<ListNode>::iterator iter = test.begin();
-            resultOutput = (*iter).get_value();
+            /* this->calculate(test); */
+            /* std::list<ListNode>::iterator iter = test.begin(); */
+            /* resultOutput = (*iter).get_value(); */
+            resultOutput = this->masud(test);
 
         }
         return exit;
@@ -506,7 +507,7 @@ namespace s21 {
     }
 
     void Model::calculate(type_list &after_pols) {
-        after_pols.reverse();
+//        after_pols.reverse();
         std::cout << "IN CALCULATE" << std::endl;
         for (auto i : after_pols) {
             std::cout << i.get_type() << " < Type " <<  i.get_value() << "  <Value " << i.get_priority()  << " <Priority"<< std::endl;
@@ -654,14 +655,130 @@ namespace s21 {
   std::cout << "Man " << std::endl;
 }
 
+double Model::masud(type_list &after_pols) {
+    after_pols.reverse();
+    std::list<double> tmp;
+    for (auto &i : after_pols) {
+        if (i.get_type() == this->type_t_["s21_number"]) {
+            tmp.push_back(i.get_value());
+        } else if (i.get_type() == this->type_t_["s21_plus"]) {
+            this->plus(tmp);
+        } else if (i.get_type() == this->type_t_["s21_minus"]) {
+            this->minus(tmp);
+        } else if (i.get_type() == this->type_t_["s21_mult"]) {
+            this->mult(tmp); 
+        } else if (i.get_type() == this->type_t_["s21_div"]) {
+            this->div(tmp);
+        } else if (i.get_type() == this->type_t_["s21_un_minus"]) {
+            this->un_minus(tmp);
+        } else if (i.get_type() == this->type_t_["s21_un_plus"]) {
+            this->un_plus(tmp);
+        }
+    }
 
+    return tmp.back();
+} 
 
+void Model::un_minus(double_list &tmp) {
+    double b = tmp.back();
+    tmp.pop_back();
+    double result = - b;
+    tmp.push_back(result);
+}
 
+void Model::un_plus(double_list &tmp) {
+    double b = tmp.back();
+    tmp.pop_back();
+    double result = +b;
+    tmp.push_back(result);
+
+}
+void Model::minus(double_list &tmp) {
+    double b = tmp.back();
+    tmp.pop_back();
+    double result = tmp.back() - b;
+    tmp.push_back(result);
+
+}
+void Model::plus(double_list &tmp) {
+    double b = tmp.back();
+    tmp.pop_back();
+    double result = tmp.back() + b;
+    tmp.push_back(result);
+
+}
+void Model::mult(double_list &tmp) {
+    double b = tmp.back();
+    tmp.pop_back();
+    double result = tmp.back() * b;
+    tmp.push_back(result);
+
+}
+void Model::div(double_list &tmp) {
+    double b = tmp.back();
+    tmp.pop_back();
+    double result = tmp.back() / b;
+    tmp.push_back(result);
+
+}
+
+void Model::s21_pow(double_list &tmp) {
+    double b = tmp.back();
+    tmp.pop_back();
+    double result = pow(tmp.back(), b);
+    tmp.push_back(result);
+
+}
+
+void Model::s21_mod(double_list &tmp) {
+    double b = tmp.back();
+    tmp.pop_back();
+    double result = fmod(tmp.back(), b);
+    tmp.push_back(result);
+
+}
+
+void Model::s21_sin(double_list &tmp) {
+    tmp.push_back(sin(tmp.back()));
+    tmp.pop_back();
+}
+void Model::s21_cos(double_list &tmp) {
+    tmp.push_back(cos(tmp.back()));
+    tmp.pop_back();
+}
+void Model::s21_tan(double_list &tmp) {
+    tmp.push_back(tan(tmp.back()));
+    tmp.pop_back();
+}
+void Model::s21_asin(double_list &tmp) {
+    tmp.push_back(asin(tmp.back()));
+    tmp.pop_back();
+}
+void Model::s21_acos(double_list &tmp) {
+    tmp.push_back(acos(tmp.back()));
+    tmp.pop_back();
+}
+void Model::s21_atan(double_list &tmp) {
+    tmp.push_back(atan(tmp.back()));
+    tmp.pop_back();
+}
+void Model::s21_ln(double_list &tmp) {
+    tmp.push_back(log(tmp.back()));
+    tmp.pop_back();
+}
+void Model::s21_log(double_list &tmp) {
+    tmp.push_back(log10(tmp.back()));
+    tmp.pop_back();
+}
+void Model::s21_sqrt(double_list &tmp) {
+    tmp.push_back(sqrt(tmp.back()));
+    tmp.pop_back();
+}
 }  // namespace s21
 
 int main(void) {
     s21::Model a;
-    std::string j("2+2");
+    std::string j("-2+2");
     double b;
 
     a.finally(j, 2.2, b);

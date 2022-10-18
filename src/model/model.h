@@ -114,6 +114,7 @@ namespace s21 {
             using str = std::string;
             using iter = std::string::iterator;
             using type_list = std::list<ListNode>;
+            using  double_list = std::list<double>;
             Model() {;}
             ~Model() {;}
             void say_hello() { 
@@ -156,6 +157,14 @@ namespace s21 {
             void calculate_lexems(std::list<ListNode> &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3);
             void calculate_functions(type_list &after_pols, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3);
             void calculate_functions_2(type_list &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2);
+            double masud(type_list &after_pols);
+            void plus(double_list &tmp);
+            void minus(double_list &tmp);
+            void mult(double_list &tmp);
+            void div(double_list &tmp);
+            void un_minus(double_list &tmp);
+            void un_plus(double_list &tmp);
+            void s21_sin(double_list &tmp);
 
         private:
             int check_name_mod(const char *mod);
