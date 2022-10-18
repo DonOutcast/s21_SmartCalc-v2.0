@@ -448,7 +448,7 @@ namespace s21 {
                             support.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
                             break;
                         } else {
-                             after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+                             after_notation.push_back(ListNode((*support.begin()).get_value(), (*support.begin()).get_priority(), (*support.begin()).get_type()));
 //                            after_notation.push_back(*iter_list);
                             support.pop_back();
                         }
@@ -456,7 +456,7 @@ namespace s21 {
                 }
             } else {
                 while ((*support.begin()).get_type() != this->type_t_["s21_open_brace"]) {
-                     after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+                     after_notation.push_back(ListNode((*support.begin()).get_value(), (*support.begin()).get_priority(), (*support.begin()).get_type()));
 //                    after_notation.push_back(*iter_list);
                     support.pop_back();                    
                 }
@@ -467,7 +467,7 @@ namespace s21 {
         }
         std::list<ListNode>::iterator iter_support = support.begin();
         while (iter_support != support.end()) {
-                    after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
+                    after_notation.push_back(ListNode((*support.begin()).get_value(), (*support.begin()).get_priority(), (*support.begin()).get_type()));
 //                    after_notation.push_back(*iter_list);
                     support.pop_back();
                     ++iter_support;
@@ -507,6 +507,7 @@ namespace s21 {
 
     void Model::calculate(type_list &after_pols) {
         after_pols.reverse();
+        std::cout << "IN CALCULATE" << std::endl;
         for (auto i : after_pols) {
             std::cout << i.get_type() << " < Type " <<  i.get_value() << "  <Value " << i.get_priority()  << " <Priority"<< std::endl;
         }
@@ -514,31 +515,47 @@ namespace s21 {
             std::list<ListNode>::iterator tmp1 = after_pols.begin();
             std::list<ListNode>::iterator tmp2 = ++tmp1;
             --tmp1;
+            std::cout << (*tmp1).get_value() << std::endl;
+            std::cout << (*tmp2).get_value() << std::endl;
             std::list<ListNode>::iterator tmp3;
-            if (tmp2 != after_pols.end()) {
-              tmp3 = ++tmp2;
-             --tmp2; 
+            if (++tmp2 != after_pols.end()) {
+              tmp3 = tmp2;
+             --tmp2;
+             std::cout << "Tmp3 Value: " <<  (*tmp3).get_value() << std::endl;
             }
             if (((*tmp2).get_type() == this->type_t_["s21_number"])) {
-                while (!(*tmp3).get_priority()) {
+                while ((*tmp3).get_priority() != 0) {
                     tmp1 = tmp2;
                     tmp2 = ++tmp1;
                     --tmp1;
                     tmp3 = ++tmp2;
                     --tmp2;
+                    std::cout << "Tmp1 Value: " << (*tmp1).get_value() << " Type " << (*tmp1).get_type() << std::endl;
+                    std::cout << "Tmp2 Value: " << (*tmp2).get_value() << " Type " << (*tmp2).get_type()  << std::endl;
+                    std::cout << "Tmp3 Value: " << (*tmp3).get_value() << " Type " << (*tmp3).get_type() <<  std::endl;
                 }
-                std::cout << (*tmp3).get_type()  << "This is type " << std::endl;
+                std::cout << (*tmp3).get_value() << " Value" << std::endl;
+                std::cout << (*tmp3).get_type() << " Type" << std::endl;
                 if ((*tmp3).get_type() >= 16 && (*tmp3).get_type() <= 21) {
+                    std::cout << "Here before lexems" << std::endl;
                     this->calculate_lexems(after_pols, tmp1, tmp2, tmp3);
+                    std::cout << "Here After lexems" << std::endl;
                 } else {
+                    std::cout << "Here before function" << std::endl;
                     this->calculate_functions(after_pols, tmp2, tmp3);
+                    std::cout << "After function" << std::endl;
                 }
             } else {
+                std::cout << "Here before function 2" << std::endl;
                 this->calculate_functions_2(after_pols, tmp1, tmp2);
+                std::cout << "After function 2" << std::endl;
             }
         }
     }
- 
+
+
+
+
   void Model::calculate_lexems(std::list<ListNode> &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3) {
   double result = 0;
   double a = (*tmp1).get_value();
@@ -564,6 +581,9 @@ namespace s21 {
 }
 
   void Model::calculate_functions(type_list &after_pols, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3) {
+        std::cout << "*********" << std::endl;
+        std::cout << (*tmp2).get_value() << " " << (*tmp2).get_priority() << " " << (*tmp2).get_type() << std::endl;
+        std::cout << "**********" << std::endl;
   double a = (*tmp2).get_value();
   double result = 0;
   if ((*tmp3).get_type() == this->type_t_["21_un_plus"]) {
@@ -592,6 +612,9 @@ namespace s21 {
   (*tmp2).set_priority(0);
   (*tmp2).set_type(this->type_t_["s21_number"]);
   (*tmp2).set_value(result);
+      std::cout << "*********" << std::endl;
+      std::cout << (*tmp2).get_value() << " " << (*tmp2).get_priority() << " " << (*tmp2).get_type() << std::endl;
+      std::cout << "**********" << std::endl;
   after_pols.erase(tmp3);
 }
 
@@ -599,6 +622,7 @@ namespace s21 {
   void Model::calculate_functions_2(type_list &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2) {
   double a = 0;
   double result = (*tmp1).get_value();
+  std::cout << (*tmp2).get_type() << " " << (*tmp2).get_value() << " " << (*tmp2).get_priority() << std::endl;
   if ((*tmp2).get_type() == this->type_t_["s21_un_plus"]) {
     result = +a;
   } else if ((*tmp2).get_type() == this->type_t_["s21_un_minus"]) {
@@ -625,7 +649,9 @@ namespace s21 {
   (*tmp1).set_priority(0);
   (*tmp1).set_type(this->type_t_["s21_number"]);
   (*tmp1).set_value(result);
+  std::cout << (*tmp2).get_type() << " IN fun" << std::endl;
   after_pols.erase(tmp2);
+  std::cout << "Man " << std::endl;
 }
 
 
