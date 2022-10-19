@@ -7,4 +7,6 @@ include_directories(src/model)
 
 add_executable(s21_SmartCalc_v2_0
         src/model/model.cc
-        src/model/model.h)
+        src/model/model.h
+        src/controller/controller.cc
+        src/controller/controller.h)

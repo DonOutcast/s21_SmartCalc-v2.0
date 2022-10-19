@@ -469,7 +469,7 @@ namespace s21 {
             } else {
                 while (support.front().get_type() != this->type_t_["s21_open_brace"]) {
                      /* after_notation.push_back(ListNode((support.back()).get_value(), (support.back()).get_priority(), (support.back()).get_type())); */
-                   after_notation.push_back(support.front());
+                   after_notation.push_front(support.front());
                         support.pop_front();
                 }
                 support.pop_front();
@@ -712,6 +712,7 @@ void Model::minus(double_list &tmp) {
     double b = tmp.back();
     tmp.pop_back();
     double result = tmp.back() - b;
+    tmp.pop_back();
     tmp.push_back(result);
 
 }
@@ -719,6 +720,7 @@ void Model::plus(double_list &tmp) {
     double b = tmp.back();
     tmp.pop_back();
     double result = tmp.back() + b;
+    tmp.pop_back();
     tmp.push_back(result);
 
 }
@@ -726,6 +728,7 @@ void Model::mult(double_list &tmp) {
     double b = tmp.back();
     tmp.pop_back();
     double result = tmp.back() * b;
+    tmp.pop_back();
     tmp.push_back(result);
 
 }
@@ -733,6 +736,7 @@ void Model::div(double_list &tmp) {
     double b = tmp.back();
     tmp.pop_back();
     double result = tmp.back() / b;
+    tmp.pop_back();
     tmp.push_back(result);
 
 }
@@ -741,6 +745,7 @@ void Model::s21_pow(double_list &tmp) {
     double b = tmp.back();
     tmp.pop_back();
     double result = pow(tmp.back(), b);
+    tmp.pop_back();
     tmp.push_back(result);
 
 }
@@ -749,13 +754,13 @@ void Model::s21_mod(double_list &tmp) {
     double b = tmp.back();
     tmp.pop_back();
     double result = fmod(tmp.back(), b);
+    tmp.pop_back();
     tmp.push_back(result);
 
 }
 
 void Model::s21_sin(double_list &tmp) {
     double res = sin(tmp.back());
-    std::cout << res << std::endl;
     tmp.pop_back();
     tmp.push_back(res);
 }

@@ -79,6 +79,13 @@ build CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o: CXX_COMPILER__s21_
   OBJECT_DIR = CMakeFiles/s21_SmartCalc_v2_0.dir
   OBJECT_FILE_DIR = CMakeFiles/s21_SmartCalc_v2_0.dir/src/model
 
+build CMakeFiles/s21_SmartCalc_v2_0.dir/src/controller/controller.cc.o: CXX_COMPILER__s21_SmartCalc_v2_0_Debug /Users/lymondgl/Desktop/s21_SmartCalc-v2.0/src/controller/controller.cc || cmake_object_order_depends_target_s21_SmartCalc_v2_0
+  DEP_FILE = CMakeFiles/s21_SmartCalc_v2_0.dir/src/controller/controller.cc.o.d
+  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++14
+  INCLUDES = -I/Users/lymondgl/Desktop/s21_SmartCalc-v2.0/src/model
+  OBJECT_DIR = CMakeFiles/s21_SmartCalc_v2_0.dir
+  OBJECT_FILE_DIR = CMakeFiles/s21_SmartCalc_v2_0.dir/src/controller
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target s21_SmartCalc_v2_0
@@ -87,7 +94,7 @@ build CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o: CXX_COMPILER__s21_
 #############################################
 # Link the executable s21_SmartCalc_v2_0
 
-build s21_SmartCalc_v2_0: CXX_EXECUTABLE_LINKER__s21_SmartCalc_v2_0_Debug CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o
+build s21_SmartCalc_v2_0: CXX_EXECUTABLE_LINKER__s21_SmartCalc_v2_0_Debug CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o CMakeFiles/s21_SmartCalc_v2_0.dir/src/controller/controller.cc.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
   OBJECT_DIR = CMakeFiles/s21_SmartCalc_v2_0.dir
   POST_BUILD = :
