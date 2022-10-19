@@ -3,11 +3,12 @@
 namespace s21 {
     class Controller {
     private:
-        s21::Model *model_;
+        s21::Model model_;
     public:
+        
         Controller() {;}
         ~Controller() {;}
-        void say();
+        void finally(std::string &str, double X, double &resultOutput);
     };  // Controller
 
 

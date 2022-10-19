@@ -51,7 +51,7 @@ namespace s21 {
                 {"s21_mult", 20},
                 {"s21_div", 21}
             };
-        public:
+
             struct ListNode {
                 private:
                     double value_;
@@ -147,7 +147,6 @@ namespace s21 {
             int check_after_lexem(const char *after_lexem);
             int check_after_lexem_numbers(const char *after_lexem);
            
-            int finally(str &input, double X, double &resultOutput);
 
             void parsing_to_struct(const str &string, std::list<ListNode> &node_);
             std::list<ListNode> pols_notation(std::list<ListNode> &list_lexems);
@@ -165,12 +164,23 @@ namespace s21 {
             void un_minus(double_list &tmp);
             void un_plus(double_list &tmp);
             void s21_sin(double_list &tmp);
+            void s21_cos(double_list &tmp);
+            void s21_tan(double_list &tmp);
+            void s21_asin(double_list &tmp);
+            void s21_acos(double_list &tmp);
+            void s21_atan(double_list &tmp);
+            void s21_log(double_list &tmp);
+            void s21_ln(double_list &tmp);
+            void s21_sqrt(double_list &tmp);
+            void s21_pow(double_list &tmp);
+            void s21_mod(double_list &tmp);
 
-        private:
             int check_name_mod(const char *mod);
             int check_size_string(const str& string);
             int validation_string(const str &string);
             
+        public:
+            int finally(str &input, double X, double &resultOutput);
 
 
     }; 
