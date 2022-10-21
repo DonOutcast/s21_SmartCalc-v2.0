@@ -8,7 +8,7 @@ namespace s21 {
         
         Controller() {;}
         ~Controller() {;}
-        void finally(std::string &str, double X, double &resultOutput);
+        int finally(std::string &str, double X, double &resultOutput);
     };  // Controller
 
 

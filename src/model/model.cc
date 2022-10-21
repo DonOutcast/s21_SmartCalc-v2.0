@@ -13,7 +13,8 @@ namespace s21 {
     }
     int Model::check_numbers(const char *numbers) {
         int result = this->some_items_["NO"];
-        if (*numbers >= '0' && *numbers <= '9') {
+        std::cout << numbers << std::endl;
+        if ((*numbers) >= '0' && (*numbers) <= '9') {
             result = this->some_items_["OK"];
         }
         return result;
@@ -109,33 +110,45 @@ namespace s21 {
     int Model::check_after_lexem(const char *after_lexem) {
         int result = this->some_items_["NO"];
         if (*(after_lexem) == this->lexems_["OPEN_BRACE"]) {
+            std::cout << "Iam in 1" << std::endl;
             result = this->some_items_["OK"];
-        } else if (this->check_numbers(after_lexem) == this->some_items_["OK"]) {
+        } else if (this->check_numbers(after_lexem)) {
+            std::cout << "I am in 2 " << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_x(after_lexem)) {
+            std::cout << "I am in 3 " << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_cos(after_lexem)) {
+            std::cout << "I am in 4" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_sin(after_lexem)) {
+            std::cout << "I am in 5" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_tan(after_lexem)) {
+            std::cout << "I am in 6 " << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_asin(after_lexem)) {
+            std::cout << "I am in 7" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_acos(after_lexem)) {
+            std::cout << "I am in 8" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_atan(after_lexem)) {
+            std::cout << "I am in 9" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_ln(after_lexem)) {
+            std::cout << "I am in 10" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_log(after_lexem)) {
+            std::cout << "I am in 11" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_sqrt(after_lexem)) {
+            std::cout << " I am in 12 " << std::endl;
             result = this->some_items_["OK"];
         } else if (*after_lexem == this->lexems_["OPEN_BRACE"]) {
+            std::cout << "I am in 12" << std::endl;
             result = this->some_items_["OK"];
         }
-
         return result;
     }
 
@@ -328,7 +341,7 @@ namespace s21 {
 
     int Model::finally(str &input, double X, double &resultOutput) {
         int exit = 0;
-        resultOutput +=1;
+        resultOutput =0;
         exit = this->check_size_string(input);
         if(exit != -2) {
             exit = this->check_input_X(std::to_string(X)); 
@@ -345,18 +358,18 @@ namespace s21 {
         if (!exit) {
             std::list<ListNode> list_lexems;
             this->parsing_to_struct(input, list_lexems);
-            std::cout << "*************" << std::endl;
-            for (auto &i : list_lexems) {
-                std::cout << "Type of lexems " << i.get_type() << std::endl;
-            }
-            std::cout << "*************" << std::endl;
+            /* std::cout << "*************" << std::endl; */
+            /* for (auto &i : list_lexems) { */
+                /* std::cout << "Type of lexems " << i.get_type() << std::endl; */
+            /* } */
+            /* std::cout << "*************" << std::endl; */
 
             std::list<ListNode> test(this->pols_notation(list_lexems));
-            std::cout << "*************" << std::endl;
-            for (auto &i : test) {
-                std::cout << "Type of Pols: " << i.get_type() <<  " Value: " << i.get_value() << std::endl;
-            }
-            std::cout << "*************" << std::endl;
+            /* std::cout << "*************" << std::endl; */
+            /* for (auto &i : test) { */
+                /* std::cout << "Type of Pols: " << i.get_type() <<  " Value: " << i.get_value() << std::endl; */
+            /* } */
+            /* std::cout << "*************" << std::endl; */
 
             this->swap_x_n_number(test, X);
             /* this->calculate(test); */

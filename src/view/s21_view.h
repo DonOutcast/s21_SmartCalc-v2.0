@@ -2,6 +2,12 @@
 #define S21_VIEW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QtGui>
+#include <QtCore>
+#include "../controller/controller.h"
+#include <string>
+#include "s21_credit.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class s21_view; }
@@ -15,7 +21,25 @@ public:
     s21_view(QWidget *parent = nullptr);
     ~s21_view();
 
+private slots:
+    void connecting_buttons();
+    void output_label();
+    void clear_label();
+    void calculate_finally();
+
+    void on_button_clear_clicked();
+
+    void on_button_credit_clicked();
+      void closeCalcHandler();
+
 private:
+        void execWidget(QWidget *widget);
+    s21_credit *s21_credit_;
+    s21::Controller s21_calc_;
     Ui::s21_view *ui;
+    QList<QPushButton *> buttons_digits_;
+    QList<QPushButton *> buttons_lexems_;
+    QList<QPushButton *> buttons_functions_;
+
 };
 #endif // S21_VIEW_H

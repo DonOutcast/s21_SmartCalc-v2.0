@@ -9,13 +9,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ../controller/controller.cc \
+    ../model/model.cc \
     main.cpp \
+    s21_credit.cpp \
     s21_view.cpp
 
 HEADERS += \
+    ../controller/controller.h \
+    ../model/model.h \
+    s21_credit.h \
     s21_view.h
 
 FORMS += \
+    s21_credit.ui \
     s21_view.ui
 
 # Default rules for deployment.
