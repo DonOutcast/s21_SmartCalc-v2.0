@@ -13,7 +13,6 @@ namespace s21 {
     }
     int Model::check_numbers(const char *numbers) {
         int result = this->some_items_["NO"];
-        std::cout << numbers << std::endl;
         if ((*numbers) >= '0' && (*numbers) <= '9') {
             result = this->some_items_["OK"];
         }
@@ -242,7 +241,7 @@ namespace s21 {
             result = this->some_items_["OK"];
         } else if (plus[0] == this->lexems_["LEXEM_PLUS"] && this->check_after_lexem(plus + 1)) {
             result = this->some_items_["OK"];
-        } 
+        }
         return result;
     }
 
@@ -300,10 +299,13 @@ namespace s21 {
     }
     
     int Model::validation_string(const str &string){
+
         int result = 0;
         for (size_t i = 0; i < string.length(); ++i) {
             if (this->check_numbers(&string[i]) && (this->check_after_lexem_numbers(&string[i + 1]) == 0)) {
+
             } else if (this->check_mod(&string[i])) {
+
                 i += 2;
             } else if (this->check_sin(&string[i])) {
                 i += 3;
@@ -333,15 +335,16 @@ namespace s21 {
             } else if (string[i] == this->lexems_["CLOSE_BRACE"] || this->lexems_["OPEN_BRACE"]) {
             } else {
                 result = 1;
-                break;
+                return 1;
             }
+
         }
         return result;
     }
 
     int Model::finally(str &input, double X, double &resultOutput) {
         int exit = 0;
-        resultOutput =0;
+        resultOutput = 0;
         exit = this->check_size_string(input);
         if(exit != -2) {
             exit = this->check_input_X(std::to_string(X)); 
@@ -350,6 +353,7 @@ namespace s21 {
                 exit = this->check_brace(input);
                 if(exit) {
                    exit = this->validation_string(input);
+                    std::cout << exit << std::endl;
                 } else {
                     exit = 2;
                 }
@@ -384,7 +388,7 @@ namespace s21 {
     
     int Model::check_size_string(const str& string) {
         int result = 0;
-        if (string.length() == 0 || string.length() > 255) {
+        if (string.length() == 0 || string.length() > 255 || string.length() < 3) {
             result = -2;
         }
         return result;

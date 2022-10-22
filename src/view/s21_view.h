@@ -26,20 +26,21 @@ private slots:
     void output_label();
     void clear_label();
     void calculate_finally();
-
     void on_button_clear_clicked();
-
+    void output_functions();
     void on_button_credit_clicked();
-      void closeCalcHandler();
+    void closeCalcHandler();
 
 private:
-        void execWidget(QWidget *widget);
     s21_credit *s21_credit_;
     s21::Controller s21_calc_;
     Ui::s21_view *ui;
     QList<QPushButton *> buttons_digits_;
     QList<QPushButton *> buttons_lexems_;
     QList<QPushButton *> buttons_functions_;
+    void connection_function();
+
+    void execWidget(QWidget *widget);
 
 };
 #endif // S21_VIEW_H
