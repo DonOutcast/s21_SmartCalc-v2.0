@@ -16,14 +16,230 @@
   <widget class="QPushButton" name="button_back">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>311</y>
+     <x>0</x>
+     <y>330</y>
      <width>100</width>
      <height>81</height>
     </rect>
    </property>
    <property name="text">
     <string>BACK</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="console_amount">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>30</y>
+     <width>171</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit#console_amount{
+	font-size: 30px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="console_term">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>110</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit#console_term{
+	font-size: 30px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="console_rate">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>170</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit#console_rate{
+	font-size: 30px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>250</y>
+     <width>100</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radio_diff">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>310</y>
+     <width>251</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+color: rgb(0, 0, 0);
+fon-size: 34;
+margin-left: auto;
+margin-right:auto;
+width: 6em;</string>
+   </property>
+   <property name="text">
+    <string>Differentiated</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radio_ann">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>240</y>
+     <width>211</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Annuity</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>40</y>
+     <width>211</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel#label {
+		font-size: 30px;
+	color: #FF1800;
+	background-color: #92EC00;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Credit amount</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>110</y>
+     <width>211</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel#label_2 {
+		font-size: 30px;
+	color: #FF1800;
+	background-color: #92EC00;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Credit term</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>180</y>
+     <width>201</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel#label_3 {
+		font-size: 30px;
+	color: #FF1800;
+	background-color: #92EC00;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Interest rate</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>250</y>
+     <width>211</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel#label_4 {
+		font-size: 30px;
+	color: #FF1800;
+	background-color: #92EC00;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Payment type</string>
    </property>
   </widget>
  </widget>

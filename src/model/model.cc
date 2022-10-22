@@ -23,7 +23,7 @@ namespace s21 {
         int result = this->some_items_["NO"];
         if (*x == 'x' || *x == 'X') {
             result = this->some_items_["OK"];
-            if (*(x - 1) == this->lexems_["POINT"] || *(x - 1) == this->lexems_["OPEN_BRACE"] ||
+            if (*(x - 1) == this->lexems_["POINT"] || *(x - 1) == this->lexems_["CLOSE_BRACE"] ||
                     (*(x - 1) >= '0' && *(x - 1) <= '9')) {
                 result = this->some_items_["NO"];
             }
@@ -114,7 +114,7 @@ namespace s21 {
         } else if (this->check_numbers(after_lexem)) {
             std::cout << "I am in 2 " << std::endl;
             result = this->some_items_["OK"];
-        } else if (this->check_x(after_lexem)) {
+        } else if (this->check_x(after_lexem) == 1) {
             std::cout << "I am in 3 " << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_cos(after_lexem)) {
@@ -278,6 +278,9 @@ namespace s21 {
         if (open_brace != close_brace) {
             result = this->some_items_["NO"];
         }
+        if (!result) {
+            result = 2;
+        }
         return result;
     }
     int Model::check_input_X(const str &x) {
@@ -292,6 +295,7 @@ namespace s21 {
         } else if (x[i] == this->lexems_["POINT"] && this->check_numbers(&x[i - 1])) {
             result = this->some_items_["OK"];
         } else {
+            result = -1;
             break;
         }
     } 
@@ -299,41 +303,59 @@ namespace s21 {
     }
     
     int Model::validation_string(const str &string){
-
         int result = 0;
         for (size_t i = 0; i < string.length(); ++i) {
+            std::cout << "This is  i: " << string[i] << std::endl;
             if (this->check_numbers(&string[i]) && (this->check_after_lexem_numbers(&string[i + 1]) == 0)) {
-
+                std::cout << "Hello 1" << std::endl;
             } else if (this->check_mod(&string[i])) {
-
+                std::cout << "Hello 2 " << std::endl;
                 i += 2;
             } else if (this->check_sin(&string[i])) {
+                std::cout << "Hello 3" << std::endl;
                 i += 3;
             } else if (this->check_cos(&string[i])) {
+                std::cout << "Hello 4" << std::endl;
                 i += 3;
             } else if (this->check_tan(&string[i])) {
+                std::cout << "Hello 5" << std::endl;
                 i += 3;
             } else if (this->check_asin(&string[i])) {
+                std::cout << "Hello 6" << std::endl;
                 i += 4;
             } else if (this->check_acos(&string[i])) {
+                std::cout << "Hello 7" << std::endl;
                 i += 4;
             } else if (this->check_atan(&string[i])) {
+                std::cout << "Hello 8" << std::endl;
                 i += 4;
             } else if (this->check_sqrt(&string[i])) {
+                std::cout << "Hello 9" << std::endl; 
                 i += 4;
             } else if (this->check_ln(&string[i])) {
-                i += 2;
+                std::cout << "Hello 10" << std::endl;
+                i += 2; 
             } else if (this->check_log(&string[i])) {
+                std::cout << "hello 11" << std::endl;
                 i += 3;
             } else if (this->check_x(&string[i])) {
+                std::cout << "hello 12" << std::endl;
             } else if (this->check_plus(&string[i])) {
+                std::cout << "hello 13" << std::endl;
             } else if (this->check_minus(&string[i])) {
+                std::cout << "Hello 14" << std::endl;
             } else if (this->check_div(&string[i])) {
+                std::cout << "Hello 15 " << std::endl;
             } else if (this->check_mult(&string[i])) {
+                std::cout << "Hello 16 " << std::endl;
             } else if (this->check_pow(&string[i])) {
+                std::cout << "Hello 17" << std::endl;
             } else if (this->check_point(&string[i])) {
-            } else if (string[i] == this->lexems_["CLOSE_BRACE"] || this->lexems_["OPEN_BRACE"]) {
-            } else {
+                std::cout << "Hello 18" << std::endl;
+            } else if (string[i] == '('|| string[i] == ')') {
+                std::cout << string[i] <<" Hello 19" << std::endl;
+            } else if (string[i] < '0' || string[i] > '9'){
+                std::cout << "EXITTT" << std::endl;
                 result = 1;
                 return 1;
             }
@@ -346,16 +368,19 @@ namespace s21 {
         int exit = 0;
         resultOutput = 0;
         exit = this->check_size_string(input);
+        std::cout << "This is " << X << std::endl;
+        std::cout  << " This is exit after size: " << exit<< std::endl;
         if(exit != -2) {
-            exit = this->check_input_X(std::to_string(X)); 
+            exit = this->check_input_X(std::to_string(X));
+            std::cout << X << " See " << std::endl;
+            std::cout  << " This is exit after X: " << exit<< std::endl;
             if (exit) {
                 this->remove_space(input);
                 exit = this->check_brace(input);
-                if(exit) {
+                std::cout  << " This is exit after brace: " << exit<< std::endl;
+                if(exit != 2) {
                    exit = this->validation_string(input);
-                    std::cout << exit << std::endl;
-                } else {
-                    exit = 2;
+                    std::cout  << " This is exit after validation: " << exit<< std::endl;
                 }
             }
         }
@@ -528,12 +553,12 @@ namespace s21 {
     void Model::swap_x_n_number(std::list<ListNode> &after_pols, double &number_x) {
         std::list<ListNode> tmp;
         while (!after_pols.empty()) {
-            if ((after_pols.back()).get_type() == this->type_t_["s21_x"]) {
-                (after_pols.back()).set_type(this->type_t_["s21_x"]);
-                (after_pols.back()).set_value(number_x);
+            if ((after_pols.front()).get_type() == this->type_t_["s21_x"]) {
+                (after_pols.front()).set_type(this->type_t_["s21_number"]);
+                (after_pols.front()).set_value(number_x);
             }
-            tmp.push_back(after_pols.back());
-            after_pols.pop_back();
+            tmp.push_front(after_pols.front());
+            after_pols.pop_front();
         }
         after_pols = tmp;
     }

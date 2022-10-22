@@ -12,12 +12,14 @@ SOURCES += \
     ../controller/controller.cc \
     ../model/model.cc \
     main.cpp \
+    qcustomplot.cpp \
     s21_credit.cpp \
     s21_view.cpp
 
 HEADERS += \
     ../controller/controller.h \
     ../model/model.h \
+    qcustomplot.h \
     s21_credit.h \
     s21_view.h
 

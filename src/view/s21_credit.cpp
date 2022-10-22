@@ -14,7 +14,11 @@ s21_credit::~s21_credit()
 }
 
 void s21_credit::on_pushButton_clicked() {
-    this->close();
+    if (ui->radio_diff->isChecked()) {
+        ui->pushButton->setText("Heelo World");
+    } else if (ui->radio_ann->isChecked()) {
+        ui->pushButton->setText("Hoo");
+    }
 
 }
 
