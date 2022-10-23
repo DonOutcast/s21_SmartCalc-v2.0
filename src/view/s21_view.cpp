@@ -90,10 +90,14 @@ void s21_view::calculate_finally() {
     double result = 0;
     std::string str = ui->console->text().toStdString();
     int check_input = 0;
-    double x_value = ui->console_x->text().toDouble();
-    qDebug() << x_value;
+    int check_x = 0;
+    double x_value = 0;
+    x_value = ui->console_x->text().toDouble();
+    std::string  str_x = ui->console_x->text().toStdString();
+    if (str_x != "")
+    check_x = this->s21_calc_.finally(str_x, 0, x_value);
     check_input = this->s21_calc_.finally(str, x_value, result);
-    if (check_input) {
+    if (check_input || check_x) {
         ui->console->setText("ERROR INPUT!");
     } else {
         ui->console->setText(QString::number(result, 'g', 15));
@@ -200,7 +204,10 @@ void s21_view::on_button_graph_clicked() {
 
                for(X = xBegin; X <= xEnd;X += h) {
                    x.push_back(X);
-                   s21_calc_.finally(str, X, result);
+                   check_input = s21_calc_.finally(str, X, result);
+
+                   if (check_input)
+                       ui->console->setText("ERROR INPUT!");
                    y.push_back(result);
                }
 

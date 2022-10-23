@@ -108,13 +108,13 @@ namespace s21 {
     
     int Model::check_after_lexem(const char *after_lexem) {
         int result = this->some_items_["NO"];
-        if (*(after_lexem) == this->lexems_["OPEN_BRACE"]) {
+        if (*(after_lexem) == '(') {
             std::cout << "Iam in 1" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_numbers(after_lexem)) {
             std::cout << "I am in 2 " << std::endl;
             result = this->some_items_["OK"];
-        } else if (this->check_x(after_lexem) == 1) {
+        } else if (*after_lexem == 'x'  || *after_lexem == 'X') {
             std::cout << "I am in 3 " << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_cos(after_lexem)) {
@@ -144,9 +144,11 @@ namespace s21 {
         } else if (this->check_sqrt(after_lexem)) {
             std::cout << " I am in 12 " << std::endl;
             result = this->some_items_["OK"];
-        } else if (*after_lexem == this->lexems_["OPEN_BRACE"]) {
-            std::cout << "I am in 12" << std::endl;
-            result = this->some_items_["OK"];
+//        } else if (*after_lexem == this->lexems_["OPEN_BRACE"]) {
+//            std::cout << "I am in 12" << std::endl;
+//            result = this->some_items_["OK"];
+        } else {
+            result = 0;
         }
         return result;
     }
@@ -155,9 +157,11 @@ namespace s21 {
         int result = this->some_items_["NO"];
         if (*(after_lexem) == this->lexems_["OPEN_BRACE"]) {
             result = this->some_items_["OK"];
-        } else if (this->check_numbers(after_lexem) == this->some_items_["OK"]) {
-            result = this->some_items_["OK"];
-        } else if (this->check_x(after_lexem)) {
+        }
+//        else if (this->check_numbers(after_lexem)) {
+//            result = this->some_items_["OK"];
+//        }
+        else if (this->check_x(after_lexem)) {
             result = this->some_items_["OK"];
         } else if (this->check_cos(after_lexem)) {
             result = this->some_items_["OK"];
@@ -177,8 +181,10 @@ namespace s21 {
             result = this->some_items_["OK"];
         } else if (this->check_sqrt(after_lexem)) {
             result = this->some_items_["OK"];
-        } else if (*after_lexem == this->lexems_["OPEN_BRACE"]) {
-            result = this->some_items_["OK"];
+//        } else if (*after_lexem == this->lexems_["OPEN_BRACE"]) {
+//            result = this->some_items_["OK"];
+        } else {
+            result = 0;
         }
 
         return  result;
@@ -189,6 +195,8 @@ namespace s21 {
         if (*pow == this->lexems_["POW"] && this->check_numbers(pow - 1) && this->check_numbers(pow + 1)) {
             result = this->some_items_["OK"];
         } else if (*pow == this->lexems_["POW"] && *(pow - 1) == this->lexems_["CLOSE_BRACE"] && this->check_after_lexem(pow + 1)) {
+            result = this->some_items_["OK"];
+        } else if (*pow == this->lexems_["POW"] && *(pow + 1) == this->lexems_["OPEN_BRACE"]) {
             result = this->some_items_["OK"];
         }
         return result;
@@ -253,7 +261,9 @@ namespace s21 {
             result = this->some_items_["OK"];
         } else if (minus[0] == this->lexems_["LEXEM_MINUS"] && this->check_after_lexem(minus + 1)) {
             result = this->some_items_["OK"];
-        } 
+        } else if (*minus == this->lexems_["LEXEM_MINUS"] && *(minus - 1) == '(' && *(minus + 1) == ')') {
+            result = this->some_items_["OK"];
+        }
         return result;
     }
 
@@ -354,7 +364,7 @@ namespace s21 {
                 std::cout << "Hello 18" << std::endl;
             } else if (string[i] == '('|| string[i] == ')') {
                 std::cout << string[i] <<" Hello 19" << std::endl;
-            } else if (string[i] < '0' || string[i] > '9'){
+            } else {
                 std::cout << "EXITTT" << std::endl;
                 result = 1;
                 return 1;
@@ -413,7 +423,7 @@ namespace s21 {
     
     int Model::check_size_string(const str& string) {
         int result = 0;
-        if (string.length() == 0 || string.length() > 255 || string.length() < 3) {
+        if (string.length() == 0 || string.length() > 255 ) {
             result = -2;
         }
         return result;
