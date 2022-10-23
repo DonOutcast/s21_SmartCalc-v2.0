@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>558</width>
+    <width>1020</width>
     <height>410</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #00A876;</string>
   </property>
   <widget class="QPushButton" name="button_back">
    <property name="geometry">
@@ -22,87 +25,40 @@
      <height>81</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	font-size: 30px;
+	color: white;
+	background-color: #F2A918;
+	border-style: outset;
+	border-width: 2px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
+   </property>
    <property name="text">
     <string>BACK</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="console_amount">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>30</y>
-     <width>171</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit#console_amount{
-	font-size: 30px;
-	color: rgb(0, 0, 0);
-	qproperty-alignment: 'AlignVCenter | AlignRight';
-	border: 1px solid gray;
-	background-color : white;
-	border-style: outset;
-	border-width: 6px;
-	border-color: beige;
-	border-radius: 30px;
-}</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="console_term">
-   <property name="geometry">
-    <rect>
-     <x>260</x>
-     <y>110</y>
-     <width>161</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit#console_term{
-	font-size: 30px;
-	color: rgb(0, 0, 0);
-	qproperty-alignment: 'AlignVCenter | AlignRight';
-	border: 1px solid gray;
-	background-color : white;
-	border-style: outset;
-	border-width: 6px;
-	border-color: beige;
-	border-radius: 30px;
-}</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="console_rate">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>170</y>
-     <width>191</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit#console_rate{
-	font-size: 30px;
-	color: rgb(0, 0, 0);
-	qproperty-alignment: 'AlignVCenter | AlignRight';
-	border: 1px solid gray;
-	background-color : white;
-	border-style: outset;
-	border-width: 6px;
-	border-color: beige;
-	border-radius: 30px;
-}</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>250</y>
-     <width>100</width>
+     <x>430</x>
+     <y>290</y>
+     <width>241</width>
      <height>71</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	font-size: 30px;
+	color: white;
+	background-color: #F2A918;
+	border-style: outset;
+	border-width: 2px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
    </property>
    <property name="text">
     <string>PushButton</string>
@@ -111,8 +67,8 @@
   <widget class="QRadioButton" name="radio_diff">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>310</y>
+     <x>180</x>
+     <y>300</y>
      <width>251</width>
      <height>81</height>
     </rect>
@@ -132,8 +88,8 @@ width: 6em;</string>
   <widget class="QRadioButton" name="radio_ann">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>240</y>
+     <x>220</x>
+     <y>270</y>
      <width>211</width>
      <height>61</height>
     </rect>
@@ -146,20 +102,22 @@ width: 6em;</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>40</y>
+     <y>20</y>
      <width>211</width>
      <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel#label {
-		font-size: 30px;
-	color: #FF1800;
-	background-color: #92EC00;
+    <string notr="true">QLabel{
+
+	font-size: 30px;
+	
+	background-color:#FF6A00;
 	border-style: outset;
-	border-width: 6px;
+	border-width: 3px;
 	border-color: beige;
-	border-radius: 30px;
+	border-radius: 20px;
+
 }
 </string>
    </property>
@@ -171,20 +129,22 @@ width: 6em;</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>110</y>
+     <y>100</y>
      <width>211</width>
      <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel#label_2 {
-		font-size: 30px;
-	color: #FF1800;
-	background-color: #92EC00;
+    <string notr="true">QLabel{
+
+	font-size: 30px;
+	
+	background-color:#FF6A00;
 	border-style: outset;
-	border-width: 6px;
+	border-width: 3px;
 	border-color: beige;
-	border-radius: 30px;
+	border-radius: 20px;
+
 }
 </string>
    </property>
@@ -195,21 +155,23 @@ width: 6em;</string>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>180</y>
      <width>201</width>
      <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel#label_3 {
-		font-size: 30px;
-	color: #FF1800;
-	background-color: #92EC00;
+    <string notr="true">QLabel{
+
+	font-size: 30px;
+	
+	background-color:#FF6A00;
 	border-style: outset;
-	border-width: 6px;
+	border-width: 3px;
 	border-color: beige;
-	border-radius: 30px;
+	border-radius: 20px;
+
 }
 </string>
    </property>
@@ -221,25 +183,265 @@ width: 6em;</string>
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>250</y>
+     <y>260</y>
      <width>211</width>
      <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel#label_4 {
-		font-size: 30px;
-	color: #FF1800;
-	background-color: #92EC00;
+    <string notr="true">QLabel{
+
+	font-size: 30px;
+	
+	background-color:#FF6A00;
 	border-style: outset;
-	border-width: 6px;
+	border-width: 3px;
 	border-color: beige;
-	border-radius: 30px;
+	border-radius: 20px;
+
 }
 </string>
    </property>
    <property name="text">
     <string>Payment type</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="spin_rate">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>180</y>
+     <width>171</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QDoubleSpinBox{
+	font-size: 30px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="keyboardTracking">
+    <bool>true</bool>
+   </property>
+   <property name="minimum">
+    <double>-100002.000000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>1000099.989999999990687</double>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="spin_amount">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>20</y>
+     <width>171</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QDoubleSpinBox{
+	font-size: 30px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="keyboardTracking">
+    <bool>true</bool>
+   </property>
+   <property name="minimum">
+    <double>-100002.000000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>1000099.989999999990687</double>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spin_term">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>100</y>
+     <width>161</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox{
+	font-size: 30px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>100</y>
+     <width>131</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox {
+border-radius: 20px;
+}</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>years</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>monts</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>35</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Monthly payment</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_monthly">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>35</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>60</y>
+     <width>58</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>RUB</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>110</y>
+     <width>131</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Overpayment</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_over">
+   <property name="geometry">
+    <rect>
+     <x>780</x>
+     <y>95</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>95</y>
+     <width>58</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>RUB</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>597</x>
+     <y>189</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Total payout</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_total">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>165</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>917</x>
+     <y>175</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>RUB</string>
    </property>
   </widget>
  </widget>

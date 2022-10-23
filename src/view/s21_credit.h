@@ -2,7 +2,7 @@
 #define S21_CREDIT_H
 
 #include <QWidget>
-
+#include "../controller/controller.h"
 namespace Ui {
 class s21_credit;
 }
@@ -19,8 +19,9 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-
+    s21::Controller controller_;
     Ui::s21_credit *ui;
+    void event_loop();
 };
 
 #endif // S21_CREDIT_H

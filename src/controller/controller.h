@@ -9,6 +9,16 @@ namespace s21 {
         Controller() {;}
         ~Controller() {;}
         int finally(std::string &str, double X, double &resultOutput);
+        void credit_A(const std::string sum, const std::string time , const std::string stavka, double &output_x, double &output_pereplata);
+        void credit_D(double sum, int time , double stavka,  double *output_p1, double *output_pereplata);
+        void testing(std::string &number_one, std::string &number_two) {
+            std::string res;
+            res = number_one + "/" + number_two;
+            double i = 2.2;
+            int k = 5;
+            res = std::to_string(k) + "/" +std::to_string(2);
+            std::cout << res << std::endl;
+        }
     };  // Controller
 
 

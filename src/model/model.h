@@ -181,6 +181,12 @@ namespace s21 {
             
         public:
             int finally(str &input, double X, double &resultOutput);
+            void deposit(double sum, int time, double stavka, double nalog, int choice_plus,
+                         double plus, int choice_minus, double minus, int choice_viploti, double perio_viplat, int choice_kap,
+                         double *summaNend,  double *procentEnd, double *dipositEnd);
+            void credit_A(const str sum, const str time , const str stavka, double &output_x, double &output_pereplata);
+            void credit_D(double sum, int time , double stavka,  double *output_p1, double *output_pereplata);
+
 
 
     }; 

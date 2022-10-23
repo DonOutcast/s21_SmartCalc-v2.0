@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include <QtGui>
 #include <QtCore>
-#include "../controller/controller.h"
+//#include "../controller/controller.h"
 #include <string>
 #include "s21_credit.h"
 #include "qcustomplot.h"
@@ -35,6 +35,8 @@ private slots:
 
     void on_button_graph_clicked();
     void autoBtnClickHandler(int state);
+    void on_pushButton_clicked();
+
 private:
     s21_credit *s21_credit_;
     s21::Controller s21_calc_;
@@ -43,17 +45,14 @@ private:
     QList<QPushButton *> buttons_lexems_;
     QList<QPushButton *> buttons_functions_;
     void connection_function();
-
     void execWidget(QWidget *widget);
-
     void changeRangeState(QSpinBox *spin, int state, int startValue);
-    QVector<double> x_vec_begin, y_vec_begin, x_vec_end, y_vec_end;
     double x_min_begin = -10;
     double x_min_end = 10;
     double y_min_begin = -10;
     double y_min_end = 10;
-
     QVector<double> x,y;
+    void event_loop();
 
 };
 #endif // S21_VIEW_H

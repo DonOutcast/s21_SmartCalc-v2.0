@@ -109,40 +109,28 @@ namespace s21 {
     int Model::check_after_lexem(const char *after_lexem) {
         int result = this->some_items_["NO"];
         if (*(after_lexem) == '(') {
-            std::cout << "Iam in 1" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_numbers(after_lexem)) {
-            std::cout << "I am in 2 " << std::endl;
             result = this->some_items_["OK"];
         } else if (*after_lexem == 'x'  || *after_lexem == 'X') {
-            std::cout << "I am in 3 " << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_cos(after_lexem)) {
-            std::cout << "I am in 4" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_sin(after_lexem)) {
-            std::cout << "I am in 5" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_tan(after_lexem)) {
-            std::cout << "I am in 6 " << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_asin(after_lexem)) {
-            std::cout << "I am in 7" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_acos(after_lexem)) {
-            std::cout << "I am in 8" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_atan(after_lexem)) {
-            std::cout << "I am in 9" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_ln(after_lexem)) {
-            std::cout << "I am in 10" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_log(after_lexem)) {
-            std::cout << "I am in 11" << std::endl;
             result = this->some_items_["OK"];
         } else if (this->check_sqrt(after_lexem)) {
-            std::cout << " I am in 12 " << std::endl;
             result = this->some_items_["OK"];
 //        } else if (*after_lexem == this->lexems_["OPEN_BRACE"]) {
 //            std::cout << "I am in 12" << std::endl;
@@ -315,57 +303,36 @@ namespace s21 {
     int Model::validation_string(const str &string){
         int result = 0;
         for (size_t i = 0; i < string.length(); ++i) {
-            std::cout << "This is  i: " << string[i] << std::endl;
             if (this->check_numbers(&string[i]) && (this->check_after_lexem_numbers(&string[i + 1]) == 0)) {
-                std::cout << "Hello 1" << std::endl;
             } else if (this->check_mod(&string[i])) {
-                std::cout << "Hello 2 " << std::endl;
                 i += 2;
             } else if (this->check_sin(&string[i])) {
-                std::cout << "Hello 3" << std::endl;
                 i += 3;
             } else if (this->check_cos(&string[i])) {
-                std::cout << "Hello 4" << std::endl;
                 i += 3;
             } else if (this->check_tan(&string[i])) {
-                std::cout << "Hello 5" << std::endl;
                 i += 3;
             } else if (this->check_asin(&string[i])) {
-                std::cout << "Hello 6" << std::endl;
                 i += 4;
             } else if (this->check_acos(&string[i])) {
-                std::cout << "Hello 7" << std::endl;
                 i += 4;
             } else if (this->check_atan(&string[i])) {
-                std::cout << "Hello 8" << std::endl;
                 i += 4;
             } else if (this->check_sqrt(&string[i])) {
-                std::cout << "Hello 9" << std::endl; 
                 i += 4;
             } else if (this->check_ln(&string[i])) {
-                std::cout << "Hello 10" << std::endl;
                 i += 2; 
             } else if (this->check_log(&string[i])) {
-                std::cout << "hello 11" << std::endl;
                 i += 3;
             } else if (this->check_x(&string[i])) {
-                std::cout << "hello 12" << std::endl;
             } else if (this->check_plus(&string[i])) {
-                std::cout << "hello 13" << std::endl;
             } else if (this->check_minus(&string[i])) {
-                std::cout << "Hello 14" << std::endl;
             } else if (this->check_div(&string[i])) {
-                std::cout << "Hello 15 " << std::endl;
             } else if (this->check_mult(&string[i])) {
-                std::cout << "Hello 16 " << std::endl;
             } else if (this->check_pow(&string[i])) {
-                std::cout << "Hello 17" << std::endl;
             } else if (this->check_point(&string[i])) {
-                std::cout << "Hello 18" << std::endl;
             } else if (string[i] == '('|| string[i] == ')') {
-                std::cout << string[i] <<" Hello 19" << std::endl;
             } else {
-                std::cout << "EXITTT" << std::endl;
                 result = 1;
                 return 1;
             }
@@ -378,45 +345,22 @@ namespace s21 {
         int exit = 0;
         resultOutput = 0;
         exit = this->check_size_string(input);
-        std::cout << "This is " << X << std::endl;
-        std::cout  << " This is exit after size: " << exit<< std::endl;
         if(exit != -2) {
             exit = this->check_input_X(std::to_string(X));
-            std::cout << X << " See " << std::endl;
-            std::cout  << " This is exit after X: " << exit<< std::endl;
             if (exit) {
                 this->remove_space(input);
                 exit = this->check_brace(input);
-                std::cout  << " This is exit after brace: " << exit<< std::endl;
                 if(exit != 2) {
                    exit = this->validation_string(input);
-                    std::cout  << " This is exit after validation: " << exit<< std::endl;
                 }
             }
         }
         if (!exit) {
             std::list<ListNode> list_lexems;
             this->parsing_to_struct(input, list_lexems);
-            /* std::cout << "*************" << std::endl; */
-            /* for (auto &i : list_lexems) { */
-                /* std::cout << "Type of lexems " << i.get_type() << std::endl; */
-            /* } */
-            /* std::cout << "*************" << std::endl; */
-
             std::list<ListNode> test(this->pols_notation(list_lexems));
-            /* std::cout << "*************" << std::endl; */
-            /* for (auto &i : test) { */
-                /* std::cout << "Type of Pols: " << i.get_type() <<  " Value: " << i.get_value() << std::endl; */
-            /* } */
-            /* std::cout << "*************" << std::endl; */
-
             this->swap_x_n_number(test, X);
-            /* this->calculate(test); */
-            /* std::list<ListNode>::iterator iter = test.begin(); */
-            /* resultOutput = (*iter).get_value(); */
-
             resultOutput = this->masud(test);
-
         }
         return exit;
     }
@@ -440,7 +384,6 @@ namespace s21 {
                     node_.push_back(ListNode(std::stof(number), 0, this->type_t_["s21_number"]));
                     number.clear();
                 }
-
             } else if (this->check_x(&string[i])) {
                 node_.push_back(ListNode(0, 0, this->type_t_["s21_x"]));
             } else if (string[i] == this->lexems_["OPEN_BRACE"]) {
@@ -504,15 +447,12 @@ namespace s21 {
             if ((*iter_list).get_type() != this->type_t_["s21_close_brace"]) {
                 if ((*iter_list).get_type() == this->type_t_["s21_number"] || (*iter_list).get_type() == this->type_t_["s21_x"]) {
                     after_notation.push_front(*iter_list);
-//                    after_notation.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
                 } else {
                     while (true) {
                         if (this->check_support(support, (*iter_list).get_priority()) || (*iter_list).get_type() == this->type_t_["s21_open_brace"]) {
-//                            support.push_back(ListNode((*iter_list).get_value(), (*iter_list).get_priority(), (*iter_list).get_type()));
                             support.push_front(*iter_list);
                             break;
                         } else {
-                             /* after_notation.push_back(ListNode((support.back()).get_value(), (support.back()).get_priority(), (support.back()).get_type())); */
                             after_notation.push_front(support.front());
                                 support.pop_front();
                         }
@@ -520,7 +460,6 @@ namespace s21 {
                 }
             } else {
                 while (support.front().get_type() != this->type_t_["s21_open_brace"]) {
-                     /* after_notation.push_back(ListNode((support.back()).get_value(), (support.back()).get_priority(), (support.back()).get_type())); */
                    after_notation.push_front(support.front());
                         support.pop_front();
                 }
@@ -529,12 +468,9 @@ namespace s21 {
 
             iter_list++;
         }
-//        std::list<ListNode>::iterator iter_support = support.begin();
         while (!support.empty()) {
-//                    after_notation.push_back(ListNode((*support.begin()).get_value(), (*support.begin()).get_priority(), (*support.begin()).get_type()));
                     after_notation.push_front(support.front());
                     support.pop_front();
-//                    ++iter_support;
         }
 
         return after_notation;
@@ -698,9 +634,6 @@ namespace s21 {
 
 double Model::masud(type_list &after_pols) {
 //    after_pols.reverse();
-    for (auto  &j :after_pols) {
-        std::cout << "Value: " << j.get_value() << " Type: " << j.get_type() << " Priority: " << j.get_priority() << std::endl;
-    }
     std::list<double> tmp;
     for (auto &i : after_pols) {
         if (i.get_type() == this->type_t_["s21_number"]) {
@@ -740,7 +673,6 @@ double Model::masud(type_list &after_pols) {
         } else if (i.get_type() == this->type_t_["s21_sqrt"]) {
             this->s21_sqrt(tmp);
         }
-        std::cout << tmp.back() << " result" << std::endl;
     }
 
     return tmp.back();
@@ -856,20 +788,104 @@ void Model::s21_sqrt(double_list &tmp) {
     tmp.pop_back();
     tmp.push_back(res);
 }
-}  // namespace s21
 
-//int main(void) {
-//    s21::Model a;
-//    std::string j("cos(3)");
-//    double b;
-//
-//    a.finally(j, 2.2, b);
-//    std::cout << b << std::endl;
-//    /* for (int i = 0; i < j.length(); ++i) { */
-//    /*     if (!a.check_point(&j[i])) */
-//            /* std::cout << "You" << std::endl; */
-//        /* std::cout << a.check_point(&j[i]) << std::endl; */
-//    /* } */
-//
-//    return 0;
-//}
+void Model::credit_A(const str sum, const str time , const str stavka, double &output_x, double &output_pereplata) {
+        std::string p_test;
+        p_test = stavka + "/" + "100" + "/" + time;
+        double p = 0;
+        this->finally(p_test, 0,p);
+        double x = 0;
+        std::string x_test;
+        x_test = sum + "*" + "(" + std::to_string(p) + "+("+ std::to_string(p) + "/" + "(((" + std::to_string(p) +"+"+ "1)^" + time + ")-1)))";
+        this->finally(x_test, 0, x);
+//    double p = stavka / 100 / time;
+//    double x = sum * (p + (p / (pow(p + 1, time) - 1)));
+    output_x = x;
+    double pereplata ;
+    std::string per_test;
+    per_test = std::to_string(x) + "*" + time + "-" + sum;
+//    double perplata = (x * time) - sum;
+    this->finally(per_test, 0, pereplata);
+    output_pereplata = pereplata;
+}
+
+
+
+void Model::credit_D(double sum, int time , double stavka,  double *output_p1, double *output_pereplata) {
+    double b = sum / time;
+    double  pereplata = 0;
+    int days = 30;
+    *output_p1 = b + sum * stavka / 100 * days/365;
+    for (int i = 0; i < time; i++) {
+       double  p = sum * stavka / 100 * days/365;
+        sum -= (b);
+        pereplata += p;
+        if (days == 30)
+            days = 31;
+        else
+            days = 30;
+    }
+    *output_pereplata = pereplata;
+}
+
+void Model::deposit(double sum, int time, double stavka, double nalog, int choice_plus,
+double plus, int choice_minus, double minus, int choice_viploti, double perio_viplat, int choice_kap,
+double *summaNend,  double *procentEnd, double *dipositEnd) {
+    double doxod = 0;
+    double sumnalog = 0;
+    if (choice_plus == 1 && choice_minus == 1) {
+        doxod =  ((((sum + plus - minus)* stavka * time)/ 365) / 100);
+    } else if (choice_plus == 1 && choice_minus == 0) {
+          doxod = ((((sum + plus)* stavka * time)/ 365) / 100);
+    } else if (choice_plus == 0 && choice_minus == 1) {
+          doxod = ((((sum - minus)* stavka * time)/ 365) / 100);
+    } else if (choice_plus == 0 && choice_minus == 0) {
+        doxod = (((sum  * stavka * time)/ 365) / 100);
+    }
+    if (choice_viploti == 1) {
+        double vipl = doxod / perio_viplat;
+        sumnalog = vipl * perio_viplat * nalog / 100;
+    }
+     double eyear_pro = stavka / 100;
+    if (choice_kap == 1) {
+        double tmp = 1 + (eyear_pro / 365);
+        double kapday = sum * pow(tmp, time);
+        *dipositEnd = kapday;
+        *procentEnd = kapday - sum;
+        *summaNend = *procentEnd * nalog / 100;
+        *procentEnd -= *summaNend;
+
+    } else if (choice_kap == 2) {
+        double tmp1 = 1 + (eyear_pro / 12);
+        int time_monht = time / 30;
+         double kapmonth = sum * pow(tmp1, time_monht);
+        *dipositEnd = kapmonth;
+        *procentEnd = kapmonth - sum;
+        *summaNend = *procentEnd * nalog / 100;
+        *procentEnd -= *summaNend;
+    } else if (choice_kap == 3) {
+        double tmp2 = 1 + (eyear_pro / 4);
+        int time_kvartal = time/ 90;
+        double kapkvart = sum * pow(tmp2, time_kvartal);
+        *dipositEnd = kapkvart;
+        *procentEnd = kapkvart - sum;
+        *summaNend = *procentEnd * nalog / 100;
+        *procentEnd -= *summaNend;
+    }
+    if (choice_viploti == 0)
+        sumnalog = doxod * nalog / 100;
+    doxod -= sumnalog;
+    sum += doxod + plus - minus;
+    if (choice_kap == 0) {
+            *summaNend = sumnalog;
+        if (choice_viploti == 0)
+            *dipositEnd = sum;
+        else
+            *dipositEnd = sum - doxod;
+        *procentEnd = doxod;
+    }
+}
+
+
+
+}  // namespace s21
