@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <QtGui>
 #include <QtCore>
+#include <vector>
+#include <iostream>
 //#include "../controller/controller.h"
 #include <string>
 #include "s21_credit.h"
@@ -51,7 +53,9 @@ private:
     double x_min_end = 10;
     double y_min_begin = -10;
     double y_min_end = 10;
-    QVector<double> x,y;
+
+    std::pair<std::vector<double>, std::vector<double>> tmp_;
+
     void event_loop();
 
 };

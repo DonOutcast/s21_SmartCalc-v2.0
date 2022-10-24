@@ -886,6 +886,25 @@ double *summaNend,  double *procentEnd, double *dipositEnd) {
     }
 }
 
+typename std::pair<std::vector<double>, std::vector<double>> Model::graph(const double min_x, const double max_x, str &output, int &flag) {
+    std::pair<std::vector<double>, std::vector<double>> tmp;
+    double N = 0;
+    double h = 0.1;
+    double X = 0;
+    double result = 0;
+    int check_input = 0;
+    N = (max_x - min_x) / h + 2;
+    for (X = min_x; X <= max_x; X += h) {
+        tmp.first.push_back(X);
+        check_input = this->finally(output, X, result);
+        if (check_input) {
+            flag = 1;
+        }
+        tmp.second.push_back(result);
+    }
+    return tmp;
+}
+
 
 
 }  // namespace s21

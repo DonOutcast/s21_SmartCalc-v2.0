@@ -169,34 +169,27 @@ void s21_view::on_button_graph_clicked() {
     ui->spin_x_end->setValue(10);
     ui->spin_y_begin->setValue(-1);
     ui->spin_y_end->setValue(1);
-    bool is_graph_builded = false;
-    double h = 0.1;
     ui->widget->clearGraphs();
     double  xBegin = 0;
     double xEnd = 0;
-    double yBegin = 0;
-    double yEnd = 0;
-    double N = 0;
+//    double yBegin = 0;
+//    double yEnd = 0;
+//    double N = 0;
     xBegin = ui->spin_x_begin->text().toDouble();
     xEnd = ui->spin_x_end->text().toDouble();
-    yBegin = ui->spin_y_begin->text().toDouble();
-    yEnd = ui->spin_y_end->text().toDouble();
+//    yBegin = ui->spin_y_begin->text().toDouble();
+//    yEnd = ui->spin_y_end->text().toDouble();
     ui->widget->xAxis->setRange(ui->spin_x_begin->text().toDouble(), ui->spin_x_end->text().toDouble());
     ui->widget->yAxis->setRange(ui->spin_y_begin->text().toDouble(), ui->spin_y_end->text().toDouble());
     std::string str = ui->console->text().toStdString();
-    int check_input = 0;
-    double x_value = ui->console_x->text().toDouble();
-    double result = 0;
-    double X = 0;
-       N = (xEnd - xBegin)/h + 2;
-       for(X = xBegin; X <= xEnd;X += h) {
-           x.push_back(X);
-           check_input = s21_calc_.finally(str, X, result);
+    int flag = 0;
 
-           if (check_input)
-               ui->console->setText("ERROR INPUT!");
-           y.push_back(result);
-       }
+        auto ko = this->s21_calc_.graph(xBegin, xEnd, str, flag);
+        QVector<double> x(ko.first.begin(), ko.first.end());
+        QVector<double> y(ko.second.begin(), ko.second.end());
+        if (flag) {
+            ui->console->setText("ERROR INPUT!");
+        }
           ui->widget->addGraph();
           ui->widget->graph(0)->addData(x, y);
           ui->widget->replot();

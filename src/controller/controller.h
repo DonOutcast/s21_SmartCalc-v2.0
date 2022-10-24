@@ -11,6 +11,7 @@ namespace s21 {
         int finally(std::string &str, double X, double &resultOutput);
         void credit_A(const std::string sum, const std::string time , const std::string stavka, double &output_x, double &output_pereplata);
         void credit_D(double sum, int time , double stavka,  double *output_p1, double *output_pereplata);
+        std::pair<std::vector<double>, std::vector<double>> graph(const double min_x, const double max_x, std::string &output, int &flag);
         void testing(std::string &number_one, std::string &number_two) {
             std::string res;
             res = number_one + "/" + number_two;

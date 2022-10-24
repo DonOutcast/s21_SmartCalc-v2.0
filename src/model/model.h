@@ -8,6 +8,8 @@
 #include <map>
 #include <set>
 #include <list>
+#include <vector>
+
 
 
 namespace s21 {
@@ -186,6 +188,7 @@ namespace s21 {
                          double *summaNend,  double *procentEnd, double *dipositEnd);
             void credit_A(const str sum, const str time , const str stavka, double &output_x, double &output_pereplata);
             void credit_D(double sum, int time , double stavka,  double *output_p1, double *output_pereplata);
+            std::pair<std::vector<double>, std::vector<double>> graph(const double min_x, const double max_x,str &output, int &flag);
 
 
 
