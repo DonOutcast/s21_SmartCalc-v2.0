@@ -180,6 +180,7 @@ namespace s21 {
             int check_name_mod(const char *mod);
             int check_size_string(const str& string);
             int validation_string(const str &string);
+            void count_days(int month, int &days);
             
         public:
             int finally(str &input, double X, double &resultOutput);
@@ -189,6 +190,10 @@ namespace s21 {
             void credit_A(const str sum, const str time , const str stavka, double &output_x, double &output_pereplata);
             void credit_D(double sum, int time , double stavka,  double *output_p1, double *output_pereplata);
             std::pair<std::vector<double>, std::vector<double>> graph(const double min_x, const double max_x,str &output, int &flag);
+        void  credit_ann(double sum_credit, int time , double rate,
+                                double &overpayment, double &total_payment, int years_months);
+        void credit_diff(double sum_credit, int time , int monht, double rate,
+                                 double &overpayment, double &total_payment);
 
 
 

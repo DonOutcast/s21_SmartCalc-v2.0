@@ -15,6 +15,14 @@ void s21::Controller::credit_D(double sum, int time , double stavka,  double *ou
 typename  std::pair<std::vector<double>, std::vector<double>> s21::Controller::graph(const double min_x, const double max_x, std::string &output, int &flag) {
     return  this->model_.graph(min_x, max_x , output, flag);
 }
+void s21::Controller::credit_ann(double sum_credit, int time , double rate,
+                                               double &overpayment, double &total_payment, int years_months) {
+    return this->model_.credit_ann(sum_credit,time, rate,  overpayment, total_payment, years_months);
+}
+void s21::Controller::credit_diff(double sum_credit, int time , int monht, double rate,
+                  double &overpayment, double &total_payment) {
+    return this->model_.credit_diff(sum_credit, time, monht, rate,  overpayment, total_payment);
+}
 
 //
 //  int main(void) {

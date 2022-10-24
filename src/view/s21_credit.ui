@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1020</width>
-    <height>410</height>
+    <height>521</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
   <widget class="QPushButton" name="button_back">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>330</y>
+     <x>10</x>
+     <y>410</y>
      <width>100</width>
      <height>81</height>
     </rect>
@@ -43,8 +43,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>290</y>
+     <x>530</x>
+     <y>310</y>
      <width>241</width>
      <height>71</height>
     </rect>
@@ -67,8 +67,8 @@
   <widget class="QRadioButton" name="radio_diff">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>300</y>
+     <x>230</x>
+     <y>260</y>
      <width>251</width>
      <height>81</height>
     </rect>
@@ -88,8 +88,8 @@ width: 6em;</string>
   <widget class="QRadioButton" name="radio_ann">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>270</y>
+     <x>260</x>
+     <y>410</y>
      <width>211</width>
      <height>61</height>
     </rect>
@@ -235,7 +235,7 @@ width: 6em;</string>
     <bool>true</bool>
    </property>
    <property name="minimum">
-    <double>-100002.000000000000000</double>
+    <double>1.000000000000000</double>
    </property>
    <property name="maximum">
     <double>1000099.989999999990687</double>
@@ -270,7 +270,7 @@ width: 6em;</string>
     <bool>true</bool>
    </property>
    <property name="minimum">
-    <double>-100002.000000000000000</double>
+    <double>1.000000000000000</double>
    </property>
    <property name="maximum">
     <double>1000099.989999999990687</double>
@@ -301,8 +301,11 @@ width: 6em;</string>
    <property name="buttonSymbols">
     <enum>QAbstractSpinBox::NoButtons</enum>
    </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="combo_years_months">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -323,7 +326,7 @@ border-radius: 20px;
    </item>
    <item>
     <property name="text">
-     <string>monts</string>
+     <string>months</string>
     </property>
    </item>
   </widget>
@@ -442,6 +445,65 @@ border-radius: 20px;
    </property>
    <property name="text">
     <string>RUB</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="spin_diff">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>330</y>
+     <width>161</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox{
+	font-size: 30px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-radius: 30px;
+}</string>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>12</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>330</y>
+     <width>221</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+
+	font-size: 30px;
+	
+	background-color:#FF6A00;
+	border-style: outset;
+	border-width: 3px;
+	border-color: beige;
+	border-radius: 20px;
+
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Number month</string>
    </property>
   </widget>
  </widget>

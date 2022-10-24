@@ -905,6 +905,52 @@ typename std::pair<std::vector<double>, std::vector<double>> Model::graph(const 
     return tmp;
 }
 
+    void  Model::credit_ann(double sum_credit, int time , double rate,
+                    double &overpayment, double &total_payment, int years_months) {
+        double stavka_monht = 0;
+        double month_payment = 0;
+        if (years_months)
+            stavka_monht = rate / 100 / 12;
+        else {
+            stavka_monht = rate / 100 / 30;
+        }
+        double coefficient = stavka_monht * pow((1 + stavka_monht), time) / (pow((1 + stavka_monht), time) - 1);
+        month_payment = coefficient * sum_credit;
+        total_payment = (month_payment) * time;
+        overpayment =total_payment - sum_credit;
+    }
+
+    void Model::credit_diff(double sum_credit, int time , int monht, double rate,
+                     double &overpayment, double &total_payment) {
+        double b = sum_credit / time;
+        int days;
+        double  month_payment = 0;
+        count_days(monht, days);
+        month_payment = b + sum_credit * rate / 100 * days/365;
+        for (int i = 0; i < time; i++) {
+            double p;
+            count_days(monht, days);
+            p = sum_credit * rate / 100 * days/365;
+            sum_credit -= (b);
+            overpayment += p;
+            if (monht == 12) {
+                monht = 0;
+            }
+            monht++;
+        }
+        total_payment = (overpayment + b * time);
+    }
+
+    void Model::count_days(int month, int &days) {
+        if (month == 2) {
+            days = 28;
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+            days = 30;
+        } else {
+            days = 31;
+        }
+    }
+
 
 
 }  // namespace s21

@@ -21,6 +21,12 @@ private slots:
 private:
     s21::Controller controller_;
     Ui::s21_credit *ui;
+    double summary = 0;
+    double stavka = 0;
+    int time = 0;
+    int years = 0;
+    double total_payment = 0;
+    double overpayment = 0;
     void event_loop();
 };
 
