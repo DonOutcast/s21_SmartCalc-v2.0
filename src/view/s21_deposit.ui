@@ -784,6 +784,22 @@ border-bottom-left-radius: 20;</string>
     <string>Сумма на вкладе к концу срока</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>20</y>
+     <width>111</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(&quot;/Users/lymondgl/Desktop/s21_SmartCalc-v2.0/src/images/sber.png&quot;);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

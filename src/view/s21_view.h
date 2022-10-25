@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <QtGui>
 #include <QtCore>
+#include <QPixmap>
+#include <QPixmap>
 #include <vector>
 #include <iostream>
 //#include "../controller/controller.h"

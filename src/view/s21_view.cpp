@@ -5,6 +5,8 @@ s21_view::s21_view(QWidget *parent): QMainWindow(parent), ui(new Ui::s21_view) {
 
     ui->setupUi(this);
     this->event_loop();
+    QPixmap pix("/Users/lymondgl/Desktop/s21_SmartCalc-v2.0/src/images/sber.png");
+    ui->label_6->setPixmap(pix);
 }
 
 s21_view::~s21_view() {
