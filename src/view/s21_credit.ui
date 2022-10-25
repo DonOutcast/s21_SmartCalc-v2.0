@@ -317,6 +317,8 @@ width: 6em;</string>
    <property name="styleSheet">
     <string notr="true">QComboBox {
 border-radius: 20px;
+color: black;
+background-color: white;
 }</string>
    </property>
    <item>
@@ -333,7 +335,7 @@ border-radius: 20px;
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>630</x>
+     <x>590</x>
      <y>35</y>
      <width>131</width>
      <height>51</height>

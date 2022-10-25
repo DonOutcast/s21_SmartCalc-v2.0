@@ -34,6 +34,7 @@ void s21_view::event_loop() {
         this->connecting_buttons();
     connect(ui->check_x, &QCheckBox::stateChanged, this, &s21_view::autoBtnClickHandler);
     connect(ui->check_y, &QCheckBox::stateChanged, this, &s21_view::autoBtnClickHandler);
+    connectSignals();
 
 }
 
@@ -110,15 +111,36 @@ void s21_view::on_button_clear_clicked() {
 }
 
 
-void s21_view::on_button_credit_clicked()
+
+void s21_view::connectSignals() {
+    QList<QPushButton*> openCalcButtons {
+        ui->button_deposit, ui->button_credit,
+    };
+    for (QPushButton *btn : qAsConst(openCalcButtons))
+        connect(btn, &QPushButton::clicked, this, &s21_view::openCalcHandler);
+//    connect(ui->quitBtn, &QPushButton::clicked, this, &s21_view::close);
+}
+
+void s21_view::closeCalcHandler() {
+    QWidget *widget = qobject_cast<QWidget*>(sender()->parent());
+    if (widget != nullptr)
+        delete widget;
+//    setWidgetToCenter(this);
+    show();
+}
+
+
+void s21_view::openCalcHandler()
 {
 
     QWidget *widget = nullptr;
     auto const &objName = sender()->objectName();
-    if (objName == "button_credit")
+    if (objName == "button_credit") {
         widget = new s21_credit();
-////    else if (objName == "button_deposit")
-////        widget = new GraphCalcView(controller_);
+       }
+    else if (objName == "button_deposit") {
+        widget = new s21_deposit();
+    }
 ////    else if (objName == "creditCalcBtn")
 ////        widget = new CreditCalcView(controller_);
 ////    else
@@ -135,12 +157,7 @@ void s21_view::execWidget(QWidget *widget) {
     }
 }
 
-void s21_view::closeCalcHandler() {
-    QWidget *widget = qobject_cast<QWidget*>(sender()->parent());
-    if (widget != nullptr)
-        delete widget;
-    show();
-}
+
 
 
 void s21_view::autoBtnClickHandler(int state) {
@@ -195,4 +212,6 @@ void s21_view::on_button_graph_clicked() {
 void s21_view::on_pushButton_clicked() {
        this->setFixedSize(750, 600);
 }
+
+
 

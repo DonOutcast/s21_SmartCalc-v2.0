@@ -11,7 +11,7 @@
 #include <string>
 #include "s21_credit.h"
 #include "qcustomplot.h"
-
+#include "s21_deposit.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class s21_view; }
@@ -32,7 +32,7 @@ private slots:
     void calculate_finally();
     void on_button_clear_clicked();
     void output_functions();
-    void on_button_credit_clicked();
+    void openCalcHandler();
     void closeCalcHandler();
 
     void on_button_graph_clicked();
@@ -40,7 +40,9 @@ private slots:
     void on_pushButton_clicked();
 
 private:
+    void connectSignals();
     s21_credit *s21_credit_;
+    s21_deposit *s21_deposit_;
     s21::Controller s21_calc_;
     Ui::s21_view *ui;
     QList<QPushButton *> buttons_digits_;

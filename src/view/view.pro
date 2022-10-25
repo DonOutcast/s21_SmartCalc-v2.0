@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     qcustomplot.cpp \
     s21_credit.cpp \
+    s21_deposit.cpp \
     s21_view.cpp
 
 HEADERS += \
@@ -21,10 +22,12 @@ HEADERS += \
     ../model/model.h \
     qcustomplot.h \
     s21_credit.h \
+    s21_deposit.h \
     s21_view.h
 
 FORMS += \
     s21_credit.ui \
+    s21_deposit.ui \
     s21_view.ui
 
 # Default rules for deployment.
