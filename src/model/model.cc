@@ -479,11 +479,6 @@ namespace s21 {
 
 
 
-
-
-
-
-
     int Model::check_support(std::list<ListNode> &support_lexems, int priority) {
         int result = 0;
         if (support_lexems.front().get_type()) {
@@ -789,102 +784,6 @@ void Model::s21_sqrt(double_list &tmp) {
     tmp.push_back(res);
 }
 
-void Model::credit_A(const str sum, const str time , const str stavka, double &output_x, double &output_pereplata) {
-        std::string p_test;
-        p_test = stavka + "/" + "100" + "/" + time;
-        double p = 0;
-        this->finally(p_test, 0,p);
-        double x = 0;
-        std::string x_test;
-        x_test = sum + "*" + "(" + std::to_string(p) + "+("+ std::to_string(p) + "/" + "(((" + std::to_string(p) +"+"+ "1)^" + time + ")-1)))";
-        this->finally(x_test, 0, x);
-//    double p = stavka / 100 / time;
-//    double x = sum * (p + (p / (pow(p + 1, time) - 1)));
-    output_x = x;
-    double pereplata ;
-    std::string per_test;
-    per_test = std::to_string(x) + "*" + time + "-" + sum;
-//    double perplata = (x * time) - sum;
-    this->finally(per_test, 0, pereplata);
-    output_pereplata = pereplata;
-}
-
-
-
-void Model::credit_D(double sum, int time , double stavka,  double *output_p1, double *output_pereplata) {
-    double b = sum / time;
-    double  pereplata = 0;
-    int days = 30;
-    *output_p1 = b + sum * stavka / 100 * days/365;
-    for (int i = 0; i < time; i++) {
-       double  p = sum * stavka / 100 * days/365;
-        sum -= (b);
-        pereplata += p;
-        if (days == 30)
-            days = 31;
-        else
-            days = 30;
-    }
-    *output_pereplata = pereplata;
-}
-
-void Model::deposit(double sum, int time, double stavka, double nalog, int choice_plus,
-double plus, int choice_minus, double minus, int choice_viploti, double perio_viplat, int choice_kap,
-double *summaNend,  double *procentEnd, double *dipositEnd) {
-    double doxod = 0;
-    double sumnalog = 0;
-    if (choice_plus == 1 && choice_minus == 1) {
-        doxod =  ((((sum + plus - minus)* stavka * time)/ 365) / 100);
-    } else if (choice_plus == 1 && choice_minus == 0) {
-          doxod = ((((sum + plus)* stavka * time)/ 365) / 100);
-    } else if (choice_plus == 0 && choice_minus == 1) {
-          doxod = ((((sum - minus)* stavka * time)/ 365) / 100);
-    } else if (choice_plus == 0 && choice_minus == 0) {
-        doxod = (((sum  * stavka * time)/ 365) / 100);
-    }
-    if (choice_viploti == 1) {
-        double vipl = doxod / perio_viplat;
-        sumnalog = vipl * perio_viplat * nalog / 100;
-    }
-     double eyear_pro = stavka / 100;
-    if (choice_kap == 1) {
-        double tmp = 1 + (eyear_pro / 365);
-        double kapday = sum * pow(tmp, time);
-        *dipositEnd = kapday;
-        *procentEnd = kapday - sum;
-        *summaNend = *procentEnd * nalog / 100;
-        *procentEnd -= *summaNend;
-
-    } else if (choice_kap == 2) {
-        double tmp1 = 1 + (eyear_pro / 12);
-        int time_monht = time / 30;
-         double kapmonth = sum * pow(tmp1, time_monht);
-        *dipositEnd = kapmonth;
-        *procentEnd = kapmonth - sum;
-        *summaNend = *procentEnd * nalog / 100;
-        *procentEnd -= *summaNend;
-    } else if (choice_kap == 3) {
-        double tmp2 = 1 + (eyear_pro / 4);
-        int time_kvartal = time/ 90;
-        double kapkvart = sum * pow(tmp2, time_kvartal);
-        *dipositEnd = kapkvart;
-        *procentEnd = kapkvart - sum;
-        *summaNend = *procentEnd * nalog / 100;
-        *procentEnd -= *summaNend;
-    }
-    if (choice_viploti == 0)
-        sumnalog = doxod * nalog / 100;
-    doxod -= sumnalog;
-    sum += doxod + plus - minus;
-    if (choice_kap == 0) {
-            *summaNend = sumnalog;
-        if (choice_viploti == 0)
-            *dipositEnd = sum;
-        else
-            *dipositEnd = sum - doxod;
-        *procentEnd = doxod;
-    }
-}
 
 typename std::pair<std::vector<double>, std::vector<double>> Model::graph(const double min_x, const double max_x, str &output, int &flag) {
     std::pair<std::vector<double>, std::vector<double>> tmp;
@@ -948,6 +847,136 @@ typename std::pair<std::vector<double>, std::vector<double>> Model::graph(const 
             days = 30;
         } else {
             days = 31;
+        }
+    }
+    void Model::deposit(double sum, int time, double procent_rate,
+                             double nalog_rate, int choise_plus, double plus,
+                             int choise_minus, double minus, int choise_payments,
+                             int perio_payments, int choise_kap, double &sumnalend,
+                             double &procentEnd, double &depositEnd, int month) {
+        if (month <= 0 || month > 12 || minus < 0 || plus < 0) {
+//            throw std::invalid_argument("Incorrect input");
+        }
+        if (choise_kap) {
+            choise_kap = perio_payments + 1;
+            if (perio_payments == 3) choise_kap = 0;
+        }
+        if (perio_payments == 0) perio_payments = time;
+        if (perio_payments == 1) {
+            perio_payments = time / 30;
+        }
+        if (perio_payments == 2) {
+            perio_payments = time / 90;
+        }
+        if (perio_payments == 3) {
+            choise_payments = 0;
+            perio_payments = 0;
+        }
+        if (choise_plus == 0) ++choise_plus;
+        if (choise_minus == 0) ++choise_minus;
+        double sumnalog = 0;
+        int i = 0, flag = 1;
+        int count = 0;
+        double sum_kap = sum;
+        double obprocent = 0;
+        while (i < time) {
+            int time_new, div;
+            double doxod;
+            if (month == 2) {
+                div = 28;
+            } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+                div = 30;
+            } else {
+                div = 31;
+            }
+            time_new = time - i;
+            if (time_new < div) {
+                div = time_new;
+            }
+            doxod = (((sum * procent_rate * div) / 365) / 100);
+            if (choise_payments == 1) {
+                double payments = doxod / perio_payments;
+                sumnalog = payments * perio_payments * nalog_rate / 100;
+            }
+            int time_kap = 0;
+            double eyear_pro = procent_rate / 100;
+            double procent, nal;
+            if (choise_kap == 1 && flag == 1) {
+                double tmp = 1 + (eyear_pro / 365);
+                time_kap = time - i;
+                double kapday = sum_kap * pow(tmp, time_kap);
+                procent = kapday - sum_kap;
+                nal = procent * nalog_rate / 100;
+                sumnalend += nal;
+                obprocent += procent;
+                procentEnd = obprocent - sumnalend;
+                depositEnd = procentEnd + sum;
+                flag = 0;
+            } else if (choise_kap == 2 && flag == 1) {
+                double tmp1 = 1 + (eyear_pro / 12);
+                time_kap = time - i;
+                double time_monht = time_kap / 30.41;
+                double kapmonth = sum_kap * pow(tmp1, time_monht);
+                procent = kapmonth - sum_kap;
+                nal = procent * nalog_rate / 100;
+                sumnalend += nal;
+                obprocent += procent;
+                procentEnd = obprocent - sumnalend;
+                depositEnd = procentEnd + sum;
+                flag = 0;
+            } else if (choise_kap == 3 && flag == 1) {
+                double tmp2 = 1 + (eyear_pro / 4);
+                time_kap = time - i;
+                double time_kvartal = time_kap / 91.;
+                double kapkvart = sum_kap * pow(tmp2, time_kvartal);
+                procent = kapkvart - sum_kap;
+                nal = procent * nalog_rate / 100;
+                sumnalend += nal;
+                obprocent += procent;
+                procentEnd = obprocent - sumnalend;
+                depositEnd = procentEnd + sum;
+                flag = 0;
+            }
+            if (choise_payments == 0) sumnalog = doxod * nalog_rate / 100;
+            doxod -= sumnalog;
+            if (choise_kap == 0) {
+                sumnalend += sumnalog;
+                procentEnd += doxod;
+                if (choise_payments == 0)
+                    depositEnd = sum + procentEnd;
+                else
+                    depositEnd = sum;
+            }
+            if (month == 12) {
+                month = 0;
+            }
+            month++;
+            count++;
+            if (choise_plus) {
+                if (fmod(count, choise_plus) == 0) {
+                    sum += plus;
+                    flag = 1;
+                    sum_kap = plus;
+                }
+            }
+            if (choise_minus) {
+                if (fmod(count, choise_minus) == 0) {
+                    sum -= minus;
+                    flag = 1;
+                    sum_kap = -minus;
+                }
+            }
+            if (choise_plus && choise_minus) {
+                if (fmod(count, choise_plus) == 0 && fmod(count, choise_minus) == 0) {
+                    flag = 1;
+                    sum_kap = plus - minus;
+                }
+            }
+            i += div;
+        }
+        if (procentEnd <= 0 || depositEnd <= 0 || std::isnan(procentEnd) ||
+            std::isnan(depositEnd)) {
+//            throw std::invalid_argument("Incorrect input");
         }
     }
 

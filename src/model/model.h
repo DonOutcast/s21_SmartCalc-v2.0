@@ -184,16 +184,16 @@ namespace s21 {
             
         public:
             int finally(str &input, double X, double &resultOutput);
-            void deposit(double sum, int time, double stavka, double nalog, int choice_plus,
-                         double plus, int choice_minus, double minus, int choice_viploti, double perio_viplat, int choice_kap,
-                         double *summaNend,  double *procentEnd, double *dipositEnd);
-            void credit_A(const str sum, const str time , const str stavka, double &output_x, double &output_pereplata);
-            void credit_D(double sum, int time , double stavka,  double *output_p1, double *output_pereplata);
             std::pair<std::vector<double>, std::vector<double>> graph(const double min_x, const double max_x,str &output, int &flag);
         void  credit_ann(double sum_credit, int time , double rate,
                                 double &overpayment, double &total_payment, int years_months);
         void credit_diff(double sum_credit, int time , int monht, double rate,
                                  double &overpayment, double &total_payment);
+        void deposit(double sum, int time, double procent_rate,
+                            double nalog_rate, int choise_plus, double plus,
+                            int choise_minus, double minus, int choise_payments,
+                            int perio_payments, int choise_kap, double &sumnalend,
+                            double &procentEnd, double &depositEnd, int month);
 
 
 

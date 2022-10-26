@@ -80,6 +80,9 @@
    <property name="minimum">
     <number>1</number>
    </property>
+   <property name="maximum">
+    <number>100000</number>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -205,7 +208,7 @@
     <bool>true</bool>
    </property>
    <property name="minimum">
-    <double>1.000000000000000</double>
+    <double>0.000000000000000</double>
    </property>
    <property name="maximum">
     <double>1000099.989999999990687</double>
@@ -234,7 +237,7 @@
   <widget class="QSpinBox" name="spin_begin">
    <property name="geometry">
     <rect>
-     <x>668</x>
+     <x>670</x>
      <y>150</y>
      <width>171</width>
      <height>61</height>
@@ -300,7 +303,7 @@
     <string>Frequency of payments</string>
    </property>
   </widget>
-  <widget class="QRadioButton" name="radioButton_2">
+  <widget class="QRadioButton" name="radio_capital">
    <property name="geometry">
     <rect>
      <x>570</x>
@@ -316,12 +319,12 @@
     <string>Капитализация</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="combo_payments_give">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>310</x>
      <y>250</y>
-     <width>231</width>
+     <width>221</width>
      <height>61</height>
     </rect>
    </property>
@@ -443,13 +446,13 @@ border-bottom-left-radius: 20;</string>
      <bool>true</bool>
     </property>
     <property name="minimum">
-     <double>1.000000000000000</double>
+     <double>0.000000000000000</double>
     </property>
     <property name="maximum">
      <double>1000099.989999999990687</double>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="combo_add">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -526,7 +529,7 @@ border-bottom-left-radius: 20;</string>
      <string>Summary back</string>
     </property>
    </widget>
-   <widget class="QDoubleSpinBox" name="spin_summary_add_2">
+   <widget class="QDoubleSpinBox" name="spin_summary_sub">
     <property name="geometry">
      <rect>
       <x>460</x>
@@ -555,13 +558,13 @@ border-bottom-left-radius: 20;</string>
      <bool>true</bool>
     </property>
     <property name="minimum">
-     <double>1.000000000000000</double>
+     <double>0.000000000000000</double>
     </property>
     <property name="maximum">
      <double>1000099.989999999990687</double>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_3">
+   <widget class="QComboBox" name="combo_sub">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -619,7 +622,7 @@ border-bottom-left-radius: 20;</string>
     <string>CALCULATE</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="spin_amount_2">
+  <widget class="QDoubleSpinBox" name="spin_tax_end">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -674,7 +677,7 @@ border-bottom-left-radius: 20;</string>
     <string>Начисленные проценты</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="spin_amount_3">
+  <widget class="QDoubleSpinBox" name="spin_symmary_tax_end">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -703,7 +706,7 @@ border-bottom-left-radius: 20;</string>
     <bool>true</bool>
    </property>
    <property name="minimum">
-    <double>1.000000000000000</double>
+    <double>0.000000000000000</double>
    </property>
    <property name="maximum">
     <double>1000099.989999999990687</double>
@@ -729,7 +732,7 @@ border-bottom-left-radius: 20;</string>
     <string>Сумма налога</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="spin_amount_4">
+  <widget class="QDoubleSpinBox" name="spin_sum_end">
    <property name="geometry">
     <rect>
      <x>450</x>
