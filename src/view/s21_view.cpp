@@ -18,7 +18,7 @@ void s21_view::event_loop() {
     this->buttons_digits_ = {
         ui->button_0, ui->button_1, ui->button_2, ui->button_3,
         ui->button_4, ui->button_5, ui->button_6, ui->button_7,
-        ui->button_8, ui->button_9
+        ui->button_8, ui->button_9, ui->button_e,
     };
 
     this->buttons_lexems_ = {

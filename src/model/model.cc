@@ -182,7 +182,7 @@ namespace s21 {
         int result = this->some_items_["NO"];
         if (*pow == this->lexems_["POW"] && this->check_numbers(pow - 1) && this->check_numbers(pow + 1)) {
             result = this->some_items_["OK"];
-        } else if (*pow == this->lexems_["POW"] && *(pow - 1) == this->lexems_["CLOSE_BRACE"] && this->check_after_lexem(pow + 1)) {
+        } else if (*pow == this->lexems_["POW"] && (*(pow - 1) == this->lexems_["CLOSE_BRACE"]  || this->check_numbers(pow - 1)) && this->check_after_lexem(pow + 1)) {
             result = this->some_items_["OK"];
         } else if (*pow == this->lexems_["POW"] && *(pow + 1) == this->lexems_["OPEN_BRACE"]) {
             result = this->some_items_["OK"];
@@ -344,6 +344,8 @@ namespace s21 {
     int Model::finally(str &input, double X, double &resultOutput) {
         int exit = 0;
         resultOutput = 0;
+        replace_symbol(input, "e+", "*10^");
+        replace_symbol(input, "e-", "/10^");
         exit = this->check_size_string(input);
         if(exit != -2) {
             exit = this->check_input_X(std::to_string(X));
@@ -979,6 +981,13 @@ typename std::pair<std::vector<double>, std::vector<double>> Model::graph(const 
 //            throw std::invalid_argument("Incorrect input");
         }
     }
+    
+void Model::replace_symbol(str &input,const str sym_off,const str sym_on) {
+    size_t position = 0;
+    while ((position = input.find(sym_off)) != input.npos) {
+        input.replace(position, sym_off.size(), sym_on);
+    } 
+}
 
 
 

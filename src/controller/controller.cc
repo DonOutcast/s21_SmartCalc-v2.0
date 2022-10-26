@@ -1,10 +1,8 @@
 #include "controller.h"
 
 int s21::Controller::finally(std::string &str, double X, double &resultOutput) {
-    std::cout << "Hello man" << X << std::endl;
     return this->model_.finally(str, X, resultOutput);
 }
-
 
 typename  std::pair<std::vector<double>, std::vector<double>> s21::Controller::graph(const double min_x, const double max_x, std::string &output, int &flag) {
     return  this->model_.graph(min_x, max_x , output, flag);
@@ -24,25 +22,12 @@ void s21::Controller::deposit(double sum, int time, double procent_rate, double 
              double &sumnalend,  double &procentEnd, double &depositEnd, int month) {
     return this->model_.deposit(sum, time, procent_rate, nalog_rate, choise_plus, plus,choise_minus, minus, choise_payments,  perio_payments,choise_kap, sumnalend, procentEnd, depositEnd, month);
 }
+/* int main (void) { */
+/*     double result = 0; */
+    /* s21::Controller a; */
+    /* std::string tmp = ("4^acos(x/4)/tan(2*x)"); */
+    /* std::cout << "This is a return function: " << a.finally(tmp, 0 ,result) << std::endl; */
 
-//
-//  int main(void) {
-//      s21::Controller a;
-//      std::string i("100");
-//      std::string j("20");
-//      std::string time("10");
-//      double k;
-//      double l;
-//      a.credit_A(i,j,time,k,l );
-//      std::cout << "CREDIT " << k << std::endl;
-//      std::cout << "Credit : " << l << std::endl;
-//      double res = 0;
-//      double x = 12;
-//      std::string s("");
-//      int i  = 0;
-//      i  =a.finally(s, x, res);
-//      std::cout << "IN main: " << i  << std::endl;
-//      std::cout << "This is a finally result: " << res << std::endl;
-//      return 0;
-// }
 
+    /* return  0; */
+/* } */

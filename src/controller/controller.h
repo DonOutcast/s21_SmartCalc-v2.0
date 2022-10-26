@@ -1,5 +1,6 @@
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 #include "../model/model.h"
-
 namespace s21 {
     class Controller {
     private:
@@ -19,15 +20,9 @@ namespace s21 {
                      int choise_minus, double minus, int choise_payments,
                      int perio_payments, int choise_kap, double &sumnalend,
                      double &procentEnd, double &depositEnd, int month);
-        void testing(std::string &number_one, std::string &number_two) {
-            std::string res;
-            res = number_one + "/" + number_two;
-            double i = 2.2;
-            int k = 5;
-            res = std::to_string(k) + "/" +std::to_string(2);
-            std::cout << res << std::endl;
-        }
     };  // Controller
 
 
 }  //  namespace s21 
+
+#endif // CONTROLLER_H

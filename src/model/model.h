@@ -1,5 +1,6 @@
 #ifndef MODEL_H
-#define MODEL_H #include <cmath>
+#define MODEL_H 
+#include <cmath>
 #include <iostream>
 #include <stdexcept>
 #include <string> 
@@ -119,10 +120,6 @@ namespace s21 {
             using  double_list = std::list<double>;
             Model() {;}
             ~Model() {;}
-            void say_hello() { 
-            ;
-            }
-       
             void remove_space(str &string);
             int check_point(const char *point);
             int check_numbers(const char *numbers);
@@ -181,6 +178,7 @@ namespace s21 {
             int check_size_string(const str& string);
             int validation_string(const str &string);
             void count_days(int month, int &days);
+            void replace_symbol(str &input,const str sym_off,const str sym_on);
             
         public:
             int finally(str &input, double X, double &resultOutput);
@@ -194,8 +192,6 @@ namespace s21 {
                             int choise_minus, double minus, int choise_payments,
                             int perio_payments, int choise_kap, double &sumnalend,
                             double &procentEnd, double &depositEnd, int month);
-
-
 
     }; 
 

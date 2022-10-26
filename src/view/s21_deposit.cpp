@@ -6,6 +6,7 @@ s21_deposit::s21_deposit(QWidget *parent) :
     ui(new Ui::s21_deposit)
 {
     ui->setupUi(this);
+    this->setFixedSize(880, 660);
 }
 
 s21_deposit::~s21_deposit()
@@ -86,7 +87,7 @@ void s21_deposit::on_button_calculate_clicked() {
 //    rate = ui->spin_rate->text().toDouble();
 //    nalog_rate = ui->spin_tax_rate->text().toDouble();
 //    month = ui->spin_begin->text().toInt();
-
+           this->setFixedSize(860, 880);
     this->event_loop();
 
 }

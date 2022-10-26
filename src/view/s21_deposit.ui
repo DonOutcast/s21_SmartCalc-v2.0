@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>864</width>
-    <height>907</height>
+    <width>860</width>
+    <height>880</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
   <widget class="QDoubleSpinBox" name="spin_amount">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>190</x>
      <y>30</y>
      <width>171</width>
      <height>61</height>
@@ -28,7 +28,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QDoubleSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -36,7 +36,8 @@
 	border-style: outset;
 	border-width: 6px;
 	border-color: beige;
-	border-radius: 20px;
+		border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }</string>
    </property>
    <property name="buttonSymbols">
@@ -55,7 +56,7 @@
   <widget class="QSpinBox" name="spin_term">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>190</x>
      <y>170</y>
      <width>171</width>
      <height>61</height>
@@ -63,7 +64,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -71,7 +72,8 @@
 	border-style: outset;
 	border-width: 6px;
 	border-color: beige;
-	border-radius: 20px;
+		border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }</string>
    </property>
    <property name="buttonSymbols">
@@ -89,7 +91,7 @@
     <rect>
      <x>2</x>
      <y>20</y>
-     <width>231</width>
+     <width>181</width>
      <height>71</height>
     </rect>
    </property>
@@ -107,7 +109,7 @@
   <widget class="QDoubleSpinBox" name="spin_rate">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>190</x>
      <y>100</y>
      <width>171</width>
      <height>61</height>
@@ -115,7 +117,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QDoubleSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -123,7 +125,8 @@
 	border-style: outset;
 	border-width: 6px;
 	border-color: beige;
-	border-radius: 20px;
+		border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }</string>
    </property>
    <property name="buttonSymbols">
@@ -144,7 +147,7 @@
     <rect>
      <x>2</x>
      <y>90</y>
-     <width>231</width>
+     <width>181</width>
      <height>71</height>
     </rect>
    </property>
@@ -164,7 +167,7 @@
     <rect>
      <x>2</x>
      <y>160</y>
-     <width>231</width>
+     <width>181</width>
      <height>71</height>
     </rect>
    </property>
@@ -190,7 +193,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QDoubleSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -217,9 +220,9 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>500</x>
      <y>50</y>
-     <width>231</width>
+     <width>161</width>
      <height>71</height>
     </rect>
    </property>
@@ -245,7 +248,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -266,9 +269,9 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>500</x>
      <y>140</y>
-     <width>231</width>
+     <width>161</width>
      <height>71</height>
     </rect>
    </property>
@@ -330,7 +333,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">color: black;
-font-size: 20px;
+font-size: 25px;
 background-color: white;
 border-top-left-radius: 20;
 border-bottom-left-radius: 20;</string>
@@ -400,21 +403,22 @@ border-bottom-left-radius: 20;</string>
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>230</x>
       <y>50</y>
-      <width>261</width>
+      <width>211</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	font-size: 25px;
+border-radius: 20px;
 }
 
 </string>
     </property>
     <property name="text">
-     <string>Summary add</string>
+     <string> Summary add</string>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="spin_summary_add">
@@ -422,13 +426,13 @@ border-bottom-left-radius: 20;</string>
      <rect>
       <x>460</x>
       <y>40</y>
-      <width>371</width>
+      <width>261</width>
       <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QDoubleSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -436,7 +440,8 @@ border-bottom-left-radius: 20;</string>
 	border-style: outset;
 	border-width: 6px;
 	border-color: beige;
-	border-radius: 20px;
+		border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }</string>
     </property>
     <property name="buttonSymbols">
@@ -457,12 +462,16 @@ border-bottom-left-radius: 20;</string>
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>165</width>
-      <height>30</height>
+      <width>200</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-size: 20px;</string>
+     <string notr="true">color: black;
+font-size: 25px;
+background-color: white;
+border-top-left-radius: 20;
+border-bottom-left-radius: 20;</string>
     </property>
     <property name="iconSize">
      <size>
@@ -491,6 +500,33 @@ border-bottom-left-radius: 20;</string>
      </property>
     </item>
    </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>40</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+    </property>
+    <property name="text">
+     <string>RUB</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QGroupBox" name="groupBox_2">
    <property name="geometry">
@@ -512,21 +548,22 @@ border-bottom-left-radius: 20;</string>
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>230</x>
       <y>50</y>
-      <width>261</width>
+      <width>211</width>
       <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	font-size: 25px;
+border-radius: 20px;
 }
 
 </string>
     </property>
     <property name="text">
-     <string>Summary back</string>
+     <string> Summary back</string>
     </property>
    </widget>
    <widget class="QDoubleSpinBox" name="spin_summary_sub">
@@ -534,13 +571,13 @@ border-bottom-left-radius: 20;</string>
      <rect>
       <x>460</x>
       <y>40</y>
-      <width>371</width>
+      <width>261</width>
       <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QDoubleSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -548,7 +585,8 @@ border-bottom-left-radius: 20;</string>
 	border-style: outset;
 	border-width: 6px;
 	border-color: beige;
-	border-radius: 20px;
+		border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }</string>
     </property>
     <property name="buttonSymbols">
@@ -569,12 +607,16 @@ border-bottom-left-radius: 20;</string>
      <rect>
       <x>10</x>
       <y>50</y>
-      <width>165</width>
-      <height>30</height>
+      <width>200</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-size: 20px;</string>
+     <string notr="true">color: black;
+font-size: 25px;
+background-color: white;
+border-top-left-radius: 20;
+border-bottom-left-radius: 20;</string>
     </property>
     <item>
      <property name="text">
@@ -597,11 +639,38 @@ border-bottom-left-radius: 20;</string>
      </property>
     </item>
    </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>40</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+    </property>
+    <property name="text">
+     <string>RUB</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QPushButton" name="button_calculate">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>440</x>
      <y>570</y>
      <width>381</width>
      <height>61</height>
@@ -627,13 +696,13 @@ border-bottom-left-radius: 20;</string>
     <rect>
      <x>450</x>
      <y>670</y>
-     <width>391</width>
+     <width>271</width>
      <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QDoubleSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -641,7 +710,8 @@ border-bottom-left-radius: 20;</string>
 	border-style: outset;
 	border-width: 6px;
 	border-color: beige;
-	border-radius: 20px;
+		border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }</string>
    </property>
    <property name="buttonSymbols">
@@ -651,7 +721,7 @@ border-bottom-left-radius: 20;</string>
     <bool>true</bool>
    </property>
    <property name="minimum">
-    <double>1.000000000000000</double>
+    <double>0.000000000000000</double>
    </property>
    <property name="maximum">
     <double>1000099.989999999990687</double>
@@ -682,13 +752,13 @@ border-bottom-left-radius: 20;</string>
     <rect>
      <x>450</x>
      <y>740</y>
-     <width>390</width>
+     <width>271</width>
      <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QDoubleSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -696,7 +766,8 @@ border-bottom-left-radius: 20;</string>
 	border-style: outset;
 	border-width: 6px;
 	border-color: beige;
-	border-radius: 20px;
+		border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }</string>
    </property>
    <property name="buttonSymbols">
@@ -737,13 +808,13 @@ border-bottom-left-radius: 20;</string>
     <rect>
      <x>450</x>
      <y>810</y>
-     <width>391</width>
+     <width>271</width>
      <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QDoubleSpinBox{
-	font-size: 30px;
+	font-size: 25px;
 	color: rgb(0, 0, 0);
 	qproperty-alignment: 'AlignVCenter | AlignRight';
 	border: 1px solid gray;
@@ -751,7 +822,8 @@ border-bottom-left-radius: 20;</string>
 	border-style: outset;
 	border-width: 6px;
 	border-color: beige;
-	border-radius: 20px;
+		border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }</string>
    </property>
    <property name="buttonSymbols">
@@ -761,7 +833,7 @@ border-bottom-left-radius: 20;</string>
     <bool>true</bool>
    </property>
    <property name="minimum">
-    <double>1.000000000000000</double>
+    <double>0.000000000000000</double>
    </property>
    <property name="maximum">
     <double>1000099.989999999990687</double>
@@ -790,10 +862,10 @@ border-bottom-left-radius: 20;</string>
   <widget class="QLabel" name="label_12">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>20</y>
-     <width>111</width>
-     <height>111</height>
+     <x>230</x>
+     <y>560</y>
+     <width>141</width>
+     <height>91</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -801,6 +873,168 @@ border-bottom-left-radius: 20;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>740</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>RUB</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>670</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>%</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>810</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>RUB</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_18">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>170</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Days</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_19">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>30</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>RUB</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_20">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>100</y>
+     <width>121</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font-size: 25px;
+	color: rgb(0, 0, 0);
+	qproperty-alignment: 'AlignVCenter | AlignRight';
+	border: 1px solid gray;
+	background-color : white;
+	border-style: outset;
+	border-width: 6px;
+	border-color: beige;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}</string>
+   </property>
+   <property name="text">
+    <string>%</string>
    </property>
   </widget>
  </widget>

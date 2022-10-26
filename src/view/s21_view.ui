@@ -1054,7 +1054,7 @@ QPushButton#button_clear:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>E</string>
+     <string>e</string>
     </property>
    </widget>
    <widget class="QPushButton" name="button_graph">

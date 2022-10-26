@@ -16,3 +16,11 @@
 999	1055	1666545850000000000	s21_SmartCalc_v2_0	c2b611ddfd64e9c4
 2	1072	1666546034000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
 1072	1128	1666546034000000000	s21_SmartCalc_v2_0	c2b611ddfd64e9c4
+3	665	1666810479000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/controller/controller.cc.o	c714dee7f7407d47
+3	982	1666810479000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
+3	728	1666810586000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/controller/controller.cc.o	c714dee7f7407d47
+729	778	1666810586000000000	s21_SmartCalc_v2_0	c2b611ddfd64e9c4
+2	1194	1666812012000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/model/model.cc.o	5350b41d9f356ff
+1194	1275	1666812012000000000	s21_SmartCalc_v2_0	c2b611ddfd64e9c4
+2	747	1666812048000000000	CMakeFiles/s21_SmartCalc_v2_0.dir/src/controller/controller.cc.o	c714dee7f7407d47
+747	796	1666812048000000000	s21_SmartCalc_v2_0	c2b611ddfd64e9c4

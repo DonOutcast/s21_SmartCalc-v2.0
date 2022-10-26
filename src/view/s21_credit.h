@@ -18,6 +18,10 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_radio_diff_clicked();
+
+    void on_radio_ann_clicked();
+
 private:
     s21::Controller controller_;
     Ui::s21_credit *ui;
