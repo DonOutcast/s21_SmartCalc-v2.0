@@ -132,9 +132,6 @@ namespace s21 {
             result = this->some_items_["OK"];
         } else if (this->check_sqrt(after_lexem)) {
             result = this->some_items_["OK"];
-//        } else if (*after_lexem == this->lexems_["OPEN_BRACE"]) {
-//            std::cout << "I am in 12" << std::endl;
-//            result = this->some_items_["OK"];
         } else {
             result = 0;
         }
@@ -146,9 +143,6 @@ namespace s21 {
         if (*(after_lexem) == this->lexems_["OPEN_BRACE"]) {
             result = this->some_items_["OK"];
         }
-//        else if (this->check_numbers(after_lexem)) {
-//            result = this->some_items_["OK"];
-//        }
         else if (this->check_x(after_lexem)) {
             result = this->some_items_["OK"];
         } else if (this->check_cos(after_lexem)) {
@@ -169,8 +163,6 @@ namespace s21 {
             result = this->some_items_["OK"];
         } else if (this->check_sqrt(after_lexem)) {
             result = this->some_items_["OK"];
-//        } else if (*after_lexem == this->lexems_["OPEN_BRACE"]) {
-//            result = this->some_items_["OK"];
         } else {
             result = 0;
         }
@@ -336,7 +328,6 @@ namespace s21 {
                 result = 1;
                 return 1;
             }
-
         }
         return result;
     }
@@ -398,7 +389,6 @@ namespace s21 {
                 } else {
                       node_.push_back(ListNode(0, 1, this->type_t_["s21_plus"]));
                 }
-                    
             } else if (string[i] == this->lexems_["LEXEM_MINUS"]) {
                 if (string[i] == first_symbol || string[i - 1] == this->lexems_["OPEN_BRACE"]) {
                     node_.push_back(ListNode(0, 1,  this->type_t_["s21_un_minus"]));
@@ -424,6 +414,9 @@ namespace s21 {
                 i += 2;
             } else if (this->check_asin(&string[i])) {
                 node_.push_back(ListNode(0, 4, this->type_t_["s21_asin"]));
+                i += 3;
+            }  else if (this->check_sqrt(&string[i])) {
+                node_.push_back(ListNode(0, 4, this->type_t_["s21_sqrt"]));
                 i += 3;
             } else if (this->check_acos(&string[i])) {
                 node_.push_back(ListNode(0, 4, this->type_t_["s21_acos"]));
@@ -506,131 +499,7 @@ namespace s21 {
         after_pols = tmp;
     }
 
-    void Model::calculate(type_list &after_pols) {
-        for (auto i : after_pols) {
-        }
-        while (!after_pols.empty()) {
-            std::list<ListNode>::iterator tmp1 = after_pols.begin();
-            std::list<ListNode>::iterator tmp2 = ++tmp1;
-            --tmp1;
-            std::list<ListNode>::iterator tmp3;
-            if (++tmp2 != after_pols.end()) {
-              tmp3 = tmp2;
-             --tmp2;
-            }
-            if (((*tmp2).get_type() == this->type_t_["s21_number"])) {
-                while ((*tmp3).get_priority() != 0) {
-                    tmp1 = tmp2;
-                    tmp2 = ++tmp1;
-                    --tmp1;
-                    tmp3 = ++tmp2;
-                    --tmp2;
-                }
-                if ((*tmp3).get_type() >= 16 && (*tmp3).get_type() <= 21) {
-                    this->calculate_lexems(after_pols, tmp1, tmp2, tmp3);
-                } else {
-                    this->calculate_functions(after_pols, tmp2, tmp3);
-                }
-            } else {
-                this->calculate_functions_2(after_pols, tmp1, tmp2);
-            }
-        }
-    }
-
-
-
-
-  void Model::calculate_lexems(std::list<ListNode> &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3) {
-  double result = 0;
-  double a = (*tmp1).get_value();
-  double b = (*tmp2).get_value();
-  if ((*tmp3).get_type() == this->type_t_["s21_plus"]) {
-    result = a + b;
-  } else if ((*tmp3).get_type() == this->type_t_["s21_minus"]) {
-    result = a - b;
-  } else if ((*tmp3).get_type() == this->type_t_["s21_mult"]) {
-    result = a * b;
-  } else if ((*tmp3).get_type() == this->type_t_["s21_div"]) {
-    result = a / b;
-  } else if ((*tmp3).get_type() == this->type_t_["s21_pow"]) {
-    result = pow(a, b);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_mod"]) {
-    result = fmod(a, b);
-  }
-  (*tmp1).set_priority(0);
-  (*tmp1).set_type(this->type_t_["s21_number"]);
-  (*tmp1).set_value(result);
-  after_pols.erase(tmp3);
-  after_pols.erase(tmp2);
-}
-
-  void Model::calculate_functions(type_list &after_pols, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3) {
-  double a = (*tmp2).get_value();
-  double result = 0;
-  if ((*tmp3).get_type() == this->type_t_["21_un_plus"]) {
-    result = +a;
-  } else if ((*tmp3).get_type() == this->type_t_["s21_un_minus"]) {
-    result = -a;
-  } else if ((*tmp3).get_type() == this->type_t_["s21_sin"]) {
-    result = sin(a);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_cos"]) {
-    result = cos(a);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_tan"]) {
-    result = tan(a);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_asin"]) {
-    result = asin(a);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_acos"]) {
-    result = acos(a);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_atan"]) {
-    result = atan(a);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_ln"]) {
-    result = log(a);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_log"]) {
-    result = log10(a);
-  } else if ((*tmp3).get_type() == this->type_t_["s21_sqrt"]) {
-    result = sqrt(a);
-  }
-  (*tmp2).set_priority(0);
-  (*tmp2).set_type(this->type_t_["s21_number"]);
-  (*tmp2).set_value(result);
-  after_pols.erase(tmp3);
-}
-
-
-  void Model::calculate_functions_2(type_list &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2) {
-  double a = 0;
-  double result = (*tmp1).get_value();
-  if ((*tmp2).get_type() == this->type_t_["s21_un_plus"]) {
-    result = +a;
-  } else if ((*tmp2).get_type() == this->type_t_["s21_un_minus"]) {
-    result = -a;
-  } else if ((*tmp2).get_type() == this->type_t_["s21_sin"]) {
-    result = sin(a);
-  } else if ((*tmp2).get_type() == this->type_t_["s21_cos"]) {
-    result = cos(a);
-  } else if ((*tmp2).get_type() == this->type_t_["s21_tan"]) {
-    result = tan(a);
-  } else if ((*tmp2).get_type() == this->type_t_["s21_asin"]) {
-    result = asin(a);
-  } else if ((*tmp2).get_type() == this->type_t_["s21_acos"]) {
-    result = acos(a);
-  } else if ((*tmp2).get_type() == this->type_t_["s21_atan"]) {
-    result = atan(a);
-  } else if ((*tmp2).get_type() == this->type_t_["s21_ln"]) {
-    result = log(a);
-  } else if ((*tmp2).get_type() == this->type_t_["s21_log"]) {
-    result = log10(a);
-  } else if ((*tmp2).get_type() == this->type_t_["s21_sqrt"]) {
-    result = sqrt(a);
-  }
-  (*tmp1).set_priority(0);
-  (*tmp1).set_type(this->type_t_["s21_number"]);
-  (*tmp1).set_value(result);
-  after_pols.erase(tmp2);
-}
-
 double Model::masud(type_list &after_pols) {
-//    after_pols.reverse();
     std::list<double> tmp;
     for (auto &i : after_pols) {
         if (i.get_type() == this->type_t_["s21_number"]) {
@@ -856,9 +725,6 @@ typename std::pair<std::vector<double>, std::vector<double>> Model::graph(const 
                              int choise_minus, double minus, int choise_payments,
                              int perio_payments, int choise_kap, double &sumnalend,
                              double &procentEnd, double &depositEnd, int month) {
-        if (month <= 0 || month > 12 || minus < 0 || plus < 0) {
-//            throw std::invalid_argument("Incorrect input");
-        }
         if (choise_kap) {
             choise_kap = perio_payments + 1;
             if (perio_payments == 3) choise_kap = 0;
@@ -978,7 +844,6 @@ typename std::pair<std::vector<double>, std::vector<double>> Model::graph(const 
         }
         if (procentEnd <= 0 || depositEnd <= 0 || std::isnan(procentEnd) ||
             std::isnan(depositEnd)) {
-//            throw std::invalid_argument("Incorrect input");
         }
     }
     

@@ -1,6 +1,5 @@
 #ifndef MODEL_H
-#define MODEL_H 
-#include <cmath>
+#define MODEL_H
 #include <iostream>
 #include <stdexcept>
 #include <string> 
@@ -151,10 +150,6 @@ namespace s21 {
             std::list<ListNode> pols_notation(std::list<ListNode> &list_lexems);
             int check_support(std::list<ListNode> &support_lexems, int priority);
             void swap_x_n_number(std::list<ListNode> &after_posl, double &number_x);
-            void calculate(std::list<ListNode> &after_pols);
-            void calculate_lexems(std::list<ListNode> &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3);
-            void calculate_functions(type_list &after_pols, std::list<ListNode>::iterator &tmp2, std::list<ListNode>::iterator &tmp3);
-            void calculate_functions_2(type_list &after_pols, std::list<ListNode>::iterator &tmp1, std::list<ListNode>::iterator &tmp2);
             double masud(type_list &after_pols);
             void plus(double_list &tmp);
             void minus(double_list &tmp);

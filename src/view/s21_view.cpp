@@ -1,6 +1,5 @@
 #include "s21_view.h"
 #include "ui_s21_view.h"
-#include <QDebug>
 s21_view::s21_view(QWidget *parent): QMainWindow(parent), ui(new Ui::s21_view) {
 
     ui->setupUi(this);
@@ -120,14 +119,12 @@ void s21_view::connectSignals() {
     };
     for (QPushButton *btn : qAsConst(openCalcButtons))
         connect(btn, &QPushButton::clicked, this, &s21_view::openCalcHandler);
-//    connect(ui->quitBtn, &QPushButton::clicked, this, &s21_view::close);
 }
 
 void s21_view::closeCalcHandler() {
     QWidget *widget = qobject_cast<QWidget*>(sender()->parent());
     if (widget != nullptr)
         delete widget;
-//    setWidgetToCenter(this);
     show();
 }
 
@@ -143,10 +140,6 @@ void s21_view::openCalcHandler()
     else if (objName == "button_deposit") {
         widget = new s21_deposit();
     }
-////    else if (objName == "creditCalcBtn")
-////        widget = new CreditCalcView(controller_);
-////    else
-////        widget = new DepositCalcView(controller_);
     hide();
     execWidget(widget);
 }

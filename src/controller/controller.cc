@@ -22,12 +22,3 @@ void s21::Controller::deposit(double sum, int time, double procent_rate, double 
              double &sumnalend,  double &procentEnd, double &depositEnd, int month) {
     return this->model_.deposit(sum, time, procent_rate, nalog_rate, choise_plus, plus,choise_minus, minus, choise_payments,  perio_payments,choise_kap, sumnalend, procentEnd, depositEnd, month);
 }
-/* int main (void) { */
-/*     double result = 0; */
-    /* s21::Controller a; */
-    /* std::string tmp = ("4^acos(x/4)/tan(2*x)"); */
-    /* std::cout << "This is a return function: " << a.finally(tmp, 0 ,result) << std::endl; */
-
-
-    /* return  0; */
-/* } */
